@@ -1,0 +1,23 @@
+.page-header
+  %h2
+    Части для сайта
+    = link_to 'Добавить', new_part_path, class: 'btn btn-success btn-sm'
+
+%table.table.table-stripped.table-bordered
+
+  %tr
+    %th Название
+    %th Код
+    %th Текст
+    %th
+    %th
+
+  - @parts.each do |part|
+    %tr
+      %td= part.title
+      %td= part.code
+      %td= part.body
+      %td= link_to 'Изменить', edit_part_path(part), class: 'btn btn-default'
+      %td= link_to 'Удалить', part, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'
+
+%br

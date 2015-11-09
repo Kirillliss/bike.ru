@@ -1,0 +1,2 @@
+module CharacteristicsGroupsHelper
+end

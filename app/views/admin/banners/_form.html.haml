@@ -1,0 +1,19 @@
+.page-header
+  %h1
+    = @banner.new_record? ? 'Новый' : 'Редактируем'
+    Баннер
+
+= simple_form_for([:admin, @banner]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :image
+    = f.input :text, as: :text, input_html: {class: 'ckedtr'}
+    = f.input :url
+    = f.input :topable
+    = f.input :leftable
+    = f.input :published
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'

@@ -1,0 +1,115 @@
+- content_for :title, @product.seo_title || @product.title
+- content_for :keywords, @product.seo_keywords || @product.title
+- content_for :description, @product.seo_description || @product.title
+
+- length = 70
+
+.container.main-container
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      = render 'best_seller'
+    .clearfix.visible-sm
+    / Product Detail
+    .col-lg-9.col-md-9.col-sm-12
+      .col-lg-12.col-sm-12
+        %span.title= @product.title
+      .col-lg-12.col-sm-12.hero-feature
+        .col-lg-5.col-sm-5
+          - if @product.images.any?
+            %ul.bxslider
+              - @product.images.each do |image|
+                %li= image_tag image.image_url(:product)
+
+        %h4= @product.title
+        = @product.article
+        %hr/
+        = raw(@product.description)
+        %hr/
+        %h3
+          %strike= number_to_currency @product.old_price, unit: 'руб.'
+        %h3= number_to_currency @product.price, unit: 'руб.'
+        .input-qty-detail
+          / %input.form-control.input-qty.text-center{:type => "text", :value => "1"}/
+          = button_to 'добавить в корзину »', line_items_path(product_id: @product), class: "btn btn-primary pull-left"
+          - unless comparing_ids.include? @product.id
+            = link_to 'Добавить к сравнению »', add_to_compare_product_path(@product.id), class: "btn btn-primary pull-left"
+          - else
+            = link_to 'Сравнить продукты »', compare_products_path, class: "btn btn-primary pull-left"
+        %br/
+        %hr/
+        .addthis_toolbox.addthis_default_style.addthis_32x32_style
+          %a.addthis_button_preferred_1
+          %a.addthis_button_preferred_2
+          %a.addthis_button_preferred_3
+          %a.addthis_button_preferred_4
+          %a.addthis_button_compact
+        %script{:src => "http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-4f0c254f1302adf8", :type => "text/javascript"}
+      .clearfix
+      .col-lg-12.col-sm-12
+        %span.title С ЭТИМ ТАК ЖЕ ПОКУПАЮТ
+      - @product.category.products.limit(3).each do |product|
+        .col-lg-4.col-sm-4.hero-feature.text-center
+          .thumbnail
+            = link_to product, class: 'link-p' do
+              = image_tag product.image_url
+            .caption.prod-caption
+              %h4= link_to product.title, product
+              .dsc= truncate_html(raw(product.description), length: length, omission: ' ...')
+              %p
+              .btn-group
+                %a.btn.btn-default{:href => "#"}= number_to_currency product.price, unit: 'руб.'
+                = link_to line_items_path(product_id: product), class: "btn btn-primary" do
+                  %i.fa.fa-shopping-cart
+                  Купить
+
+/ - content_for :left_menu do
+/   = render :partial => 'categories_menu'
+
+/ .product_th
+/   %div
+/     %h3= link_to @product.title, category_product_path(@product.category, @product)
+/     %br
+/   .row
+/     .span4
+/       - if @product.images.any?
+/         %ul.bxslider
+/           - @product.images.each do |image|
+/             %li= image_tag image.image_url(:product)
+/         / %br/
+/         / %span.price= number_to_currency @product.price
+/         / %span.price
+/         /   Артикул:
+/         /   = @product.article
+/         / %br/
+/         / %br/
+/     .span4
+/       %table.table.table-stripped
+/         - if @product.old_price.present?
+/           %tr
+/             %th Старая Цена:
+/             %td
+/               %strike= number_to_currency @product.old_price, unit: 'руб.'
+/         %tr
+/           %th Цена:
+/           %td= number_to_currency @product.price, unit: 'руб.'
+/         %tr
+/           %th Код товара:
+/           %td= @product.article
+/         %tr
+/           %td{colspan: 2}
+/             %br
+/             %center
+/               .well{style: "padding: 10px;"}
+/                 / = link_to "Добавить в корзину »".html_safe, category_product_path(@product.category.id, @product), class: "btn success", style: ''
+/                 = button_to 'Добавить в корзину »', line_items_path(product_id: @product), class: "btn success"
+/   %p= raw(@product.description)
+/   %br{style: "clear:both"}/
+/   .well{style: "padding: 10px; padding-bottom: 20px"}
+/     .left
+/     .right
+/       = button_to "Добавить в корзину »".html_safe, category_product_path(@product.category.id, @product), :class => [:btn, :success], :method => :get
+/ %hr/
+
+
+
+

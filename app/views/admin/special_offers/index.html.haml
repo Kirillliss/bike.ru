@@ -1,0 +1,30 @@
+%h1
+  Специальные предложения(2в1)
+  = link_to 'Добавить', new_admin_special_offer_path, class: 'btn btn-success'
+
+%table.table.table-stripped.table-bordered.datatable
+
+  %thead
+    %tr
+      %th Продукт 1
+      %th Продукт 2
+      %th Специальная цена
+      %th Опубликованно
+      %th
+      %th
+      %th
+
+  %tbody
+    - @special_offers.each do |special_offer|
+      %tr
+        %td= special_offer.product_one
+        %td= special_offer.product_two
+        %td= special_offer.special_price
+        %td= special_offer.published
+        %td= link_to 'Показать', [:admin, special_offer], class: 'btn btn-default'
+        %td= link_to 'Редактировать', edit_admin_special_offer_path(special_offer), class: 'btn btn-default'
+        %td= link_to 'Удалить', [:admin, special_offer], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+
+%br
+
+

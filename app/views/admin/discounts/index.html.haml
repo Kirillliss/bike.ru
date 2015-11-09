@@ -1,0 +1,32 @@
+.page-header
+  %h2
+    Скидки
+    = link_to 'Добавить', new_discount_path, class: 'btn btn-success btn-sm'
+
+%table.table.table-stripped.table-bordered
+  %tr
+    %th Название
+    %th Скидка (%)
+    %th Действует на все товары
+    %th Товары
+    %th Категории
+    %th
+    %th
+
+  - @discounts.each do |discount|
+    %tr
+      %td= discount.title
+      %td= discount.amount
+      %td= discount.all_products ? 'Да' : 'Нет'
+      %td
+        - unless discount.all_products
+          - discount.products.each do |product|
+            = link_to product.title, edit_admin_product_path(product)
+            %br
+      %td
+        - unless discount.all_products
+          - discount.categories.each do |category|
+            = link_to category.title, [:admin, category]
+            %br
+      %td= link_to 'Изменить', edit_discount_path(discount), class: 'btn btn-default'
+      %td= link_to 'Удалить', discount, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

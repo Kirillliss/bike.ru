@@ -1,0 +1,133 @@
+ru:
+  activerecord:
+    attributes:
+      page:
+        title: Название
+        body: Содержание
+        published: Видна на сайте
+        everywhereable: Общая для всех проектов
+        projects: Проекты
+        seo_title: SEO Заголовок
+        seo_keywords: SEO Ключевые слова
+        seo_description: SEO Описание
+      product:
+        title: Название
+        old_price: Старая Цена
+        price: Цена
+        article: Код товара
+        category_id: Категория
+        description: Описание
+        published: Виден на сайте
+        frontpageable: Виден на главной
+        seo_title: SEO Заголовок
+        seo_keywords: SEO Ключевые слова
+        seo_description: SEO Описание
+        hit: Хит продаж
+        markdown: Уцененка
+        benefit: Выгодное предложение
+        discount: Скидка
+      image:
+        image: Файл изображения
+      import:
+        producer: Производитель
+        stock: Поставщик
+        file_xls: Заполенный импорт
+      order:
+        name: Имя
+        address: Адрес
+        region_title: Регион
+        region_code: Код региона
+        city_title: Город
+        city_code: Код города
+        address: Адрес
+        address: Адрес
+        pay_type: Вид оплаты
+      project:
+        title: Название проекта
+      tizer:
+        title: Остроумный текст
+      user:
+        full_name: Фио
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение
+        current_password: Текущий пароль
+        phone: Телефон
+      category:
+        topper: Показать в верхнем меню
+        image: Файл изображения
+        title: Название
+        projects: Проекты
+        published: Видна на сайте
+        seo_title: SEO Заголовок
+        seo_keywords: SEO Ключевые слова
+        seo_description: SEO Описание
+        discount: Скидка
+      search:
+        producer: Производитель
+      special_offer:
+        product_one: Продукт 1
+        product_two: Продукт 2
+        special_price: Специальаня цена
+        published: Опубликован
+      coupon:
+        user: Пользователь
+        amount: Скидка(%)
+        code: Код
+        valid_till: Валиден до
+        permanent: Вечно
+        reusable: Многоразовый
+        cart: Корзина
+        used_at: Использован
+        order: Заказ
+      post:
+        title: Название
+        body: Текст
+        image: Картинка
+      stock:
+        title: Название
+        phone: Телефон
+        address: Адрес
+      import_csv_line:
+        article: Артикль
+        title: Название
+        size: Размер
+        price: Цена
+        stock: Остаток
+        import: Импорт
+      part:
+        title: Название
+        code: Код
+        body: Текст
+      person:
+        avatar: Аватар
+        first_name: Имя
+        last_name: Фамилия
+        phone: Телефон
+        job_title: Должность
+        fb_url: Facebook
+        vk_url: Вконтакте
+        email: Email
+        position: Позиция
+        published: Опубликован
+      discount:
+        title: Название
+        amount: Скидка(%)
+        all_products: Все товары
+        categories: Категории
+        products: Товары
+      home_page_banner:
+        title: Заголовок
+        title_red: Заголовок (красный)
+        title_small: Заголовок (смол)
+        description: Описание
+        main_button_title: Заголовок главной кнопки
+        main_button_url: Ссылка главной кнопки
+        secondary_button_on: Включить доп. кнопку
+        secondary_button_title: Заголовок доп. кнопки
+        secondary_button_url: Ссылка доп. кнопки
+        image_big: Большая картинка
+        image_small: Маленькая картинка
+        created_at: Создан
+        updated_at: Обновлен
+        published: Опубликован

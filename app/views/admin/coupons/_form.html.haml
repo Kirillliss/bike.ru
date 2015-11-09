@@ -1,0 +1,21 @@
+.page-header
+  %h2
+    = @coupon.new_record? ? 'Создаем' : 'Редактируем'
+    купон
+
+= simple_form_for([:admin, @coupon]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    / = f.association :user
+    = f.input :amount
+    = f.input :code
+    = f.input :valid_till
+    = f.input :permanent
+    = f.input :reusable
+    / = f.association :cart
+    / = f.input :used_at
+    / = f.association :order
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Characteristics group row:
+  = @characteristics_group_row_value.characteristics_group_row
+%p
+  %b Characteristic value:
+  = @characteristics_group_row_value.characteristic_value
+
+= link_to 'Edit', edit_characteristics_group_vl_path(@characteristics_group_row_value)
+\|
+= link_to 'Back', characteristics_group_vls_path

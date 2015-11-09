@@ -1,0 +1,41 @@
+.row
+  .col-md-4
+    = render 'imports_list'
+  .col-md-8
+    %br
+    %br
+    - if !@import.proccessed_at
+      / ЕСЛИ ТОВАРЫ НЕ БЫЛИ ЗАГРУЖЕНЫ
+      = form_tag proccess_admin_imports_path, method: :patch do
+        = hidden_field_tag :id, @import.id
+        %table.table.table-hover.table-bordered.table-condensed
+          %tr
+            %th Поля из файла
+            %th Поля базы данных
+          - @file[:headers].each do |header|
+            %tr
+              %td
+                = header
+              %td
+                = select_tag "hash_from_form[#{header}]", options_for_select(Product::COLUMNS_FOR_IMPORT)
+        = button_tag "Готово", class: "btn btn-primary btn-lg btn-block"
+
+
+    - else
+      / ЕСЛИ ТОВАРЫ БЫЛИ ЗАГРУЖЕНЫ
+
+      %table.table.table-stripped.table-bordered.datatable
+        %thead
+          %tr
+            %th Заголовок
+            %th Цена производителя
+            %th Артикл
+        %tbody
+          - @import.products.each do |product|
+            %tr
+              %td= link_to product.title, '#'
+              %td= product.producer_price
+              %td= product.article
+
+      / %td= link_to 'Edit', edit_admin_import_path(@import)
+      / %td= link_to 'Destroy', [:admin, @import], :method => :delete, :data => { :confirm => 'Are you sure?' }

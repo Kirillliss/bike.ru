@@ -1,0 +1,498 @@
+/ %ol.breadcrumb
+/   %li
+/     %a{:href => "/"} Главная
+/   %li Оформление заказа
+/   %li Квитанция Сбербанка
+
+/ :css
+/   / H1 {font-size: 12pt;}
+/   / p, ul, ol, h1 {margin-top:6px; margin-bottom:6px}
+/   td {font-size: 9pt;}
+/   small {font-size: 7pt;}
+/   / body {font-size: 10pt;}
+
+/ %section
+/   .container
+/     .row
+
+/       %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:180mm; height:145mm;"}
+/         %tbody
+/           %tr{:valign => "top"}
+/             %td{:align => "center", :style => "width:50mm; height:70mm; border:1pt solid #000000; border-bottom:none; border-right:none;"}
+/               %b Извещение
+/               %br/
+/               %font{:style => "font-size:53mm"}
+/                  
+/                 %br/
+/               %b Кассир
+/             %td{:align => "center", :style => "border:1pt solid #000000; border-bottom:none;"}
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:align => "right"}
+/                       %small
+/                         %i Форма № ПД-4
+/                   %tr
+/                     %td{:style => "border-bottom:1pt solid #000000;"} Индивидуальный предприниматель Тихомирова О.Ю.
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (наименование получателя платежа)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:style => "width:37mm; border-bottom:1pt solid #000000;"} 780217588910/
+/                     %td{:style => "width:9mm;"}  
+/                     %td{:style => "border-bottom:1pt solid #000000;"} 40802810138060000550
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (ИНН получателя платежа)
+/                     %td
+/                       %small  
+/                     %td{:align => "center"}
+/                       %small (номер счета получателя платежа)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td в 
+/                     %td{:style => "width:73mm; border-bottom:1pt solid #000000;"} УДО № 1768 Московского банка Сбербанка России г. Москвы ОАО
+/                     %td{:align => "right"} БИК  
+/                     %td{:style => "width:33mm; border-bottom:1pt solid #000000;"} 044525225
+/                   %tr
+/                     %td
+/                     %td{:align => "center"}
+/                       %small (наименование банка получателя платежа)
+/                     %td
+/                     %td
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Номер кор./сч. банка получателя платежа  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 30101 810 4 0000 0000225
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:style => "width:60mm; border-bottom:1pt solid #000000;"}
+/                       Оплата заказа №
+/                       1883  от
+/                       13.01.2015
+/                     %td{:style => "width:2mm;"}  
+/                     %td{:style => "border-bottom:1pt solid #000000;"}  
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (наименование платежа)
+/                     %td
+/                       %small  
+/                     %td{:align => "center"}
+/                       %small (номер лицевого счета (код) плательщика)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Ф.И.О. плательщика  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} Тестовый заказчик
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Адрес плательщика  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 111024, Россия, г. Москва, тестовый заказ для получения квитанции сбера 
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td
+/                       Сумма платежа 
+/                       %font{:style => "text-decoration:underline;"}>  1735 
+/                        руб. 
+/                       %font{:style => "text-decoration:underline;"}>  00 
+/                        коп.
+/                     %td{:align => "right"}   Сумма платы за услуги  _____ руб. ____ коп.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td Итого  _______ руб. ____ коп.
+/                     %td{:align => "right"}   «______»________________ 201____ г.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td
+/                       %small
+/                         С условиями приема указанной в платежном документе суммы,
+/                         в т.ч. с суммой взимаемой платы за услуги банка, ознакомлен и согласен.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:align => "right"}
+/                       %b Подпись плательщика _____________________
+/           %tr{:valign => "top"}
+/             %td{:align => "center", :style => "width:50mm; height:70mm; border:1pt solid #000000; border-right:none;"}
+/               %b Извещение
+/               %br/
+/               %font{:style => "font-size:53mm"}
+/                  
+/                 %br/
+/               %b Кассир
+/             %td{:align => "center", :style => "border:1pt solid #000000;"}
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:align => "right"}
+/                       %small
+/                         %i Форма № ПД-4
+/                   %tr
+/                     %td{:style => "border-bottom:1pt solid #000000;"} Индивидуальный предприниматель Тихомирова О.Ю.
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (наименование получателя платежа)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:style => "width:37mm; border-bottom:1pt solid #000000;"} 780217588910/
+/                     %td{:style => "width:9mm;"}  
+/                     %td{:style => "border-bottom:1pt solid #000000;"} 40802810138060000550
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (ИНН получателя платежа)
+/                     %td
+/                       %small  
+/                     %td{:align => "center"}
+/                       %small (номер счета получателя платежа)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td в 
+/                     %td{:style => "width:73mm; border-bottom:1pt solid #000000;"} УДО № 1768 Московского банка Сбербанка России г. Москвы ОАО
+/                     %td{:align => "right"} БИК  
+/                     %td{:style => "width:33mm; border-bottom:1pt solid #000000;"} 044525225
+/                   %tr
+/                     %td
+/                     %td{:align => "center"}
+/                       %small (наименование банка получателя платежа)
+/                     %td
+/                     %td
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Номер кор./сч. банка получателя платежа  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 30101 810 4 0000 0000225
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:style => "width:60mm; border-bottom:1pt solid #000000;"}
+/                       Оплата заказа №
+/                       1883  от
+/                       13.01.2015
+/                     %td{:style => "width:2mm;"}  
+/                     %td{:style => "border-bottom:1pt solid #000000;"}  
+/                   %tr
+/                     %td{:align => "center"}
+/                       %small (наименование платежа)
+/                     %td
+/                       %small  
+/                     %td{:align => "center"}
+/                       %small (номер лицевого счета (код) плательщика)
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Ф.И.О. плательщика  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} Тестовый заказчик
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:nowrap => "nowrap", :width => "1%"} Адрес плательщика  
+/                     %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 111024, Россия, г. Москва, тестовый заказ для получения квитанции сбера 
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td
+/                       Сумма платежа 
+/                       %font{:style => "text-decoration:underline;"}>  1735 
+/                        руб. 
+/                       %font{:style => "text-decoration:underline;"}>  00 
+/                        коп.
+/                     %td{:align => "right"}   Сумма платы за услуги  _____ руб. ____ коп.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td Итого  _______ руб. ____ коп.
+/                     %td{:align => "right"}   «______»________________ 201____ г.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td
+/                       %small
+/                         С условиями приема указанной в платежном документе суммы,
+/                         в т.ч. с суммой взимаемой платы за услуги банка, ознакомлен и согласен.
+/               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+/                 %tbody
+/                   %tr
+/                     %td{:align => "right"}
+/                       %b Подпись плательщика _____________________
+/       %br/
+/       %h1 Внимание! В стоимость заказа не включена комиссия банка.
+/       / Условия поставки
+/       %h1
+/         %b Метод оплаты:
+/       %ol
+/         %li Распечатайте квитанцию. Если у вас нет принтера, перепишите верхнюю часть квитанции и заполните по этому образцу стандартный бланк квитанции в вашем банке.
+/         %li Вырежьте по контуру квитанцию.
+/         %li Оплатите квитанцию в любом отделении банка, принимающего платежи от частных лиц.
+/         %li Сохраните квитанцию до подтверждения исполнения заказа.
+/       %h1
+/         %b Условия поставки:
+/       %ul
+/         %li Отгрузка оплаченного товара производится после подтверждения факта платежа.
+/         %li Идентификация платежа производится по квитанции, поступившей в наш банк.
+/       %p
+/         %b Примечание:
+/         Индивидуальный предприниматель Тихомирова О.Ю.  не может гарантировать конкретные сроки проведения вашего платежа. За дополнительной информацией о сроках доставки квитанции в банк получателя, обращайтесь в свой банк.\
+
+
+!!!
+/ saved from url=(0063)http://www.spine-sport.ru/personal/order/payment/?ORDER_ID=1883
+%html
+  %head
+    %script{:src => "chrome-extension://kajfghlhfkcocafkcjlajldicbikpgnp/catcher.js", :type => "text/javascript"}
+      :cdata
+        <!-- script injected by Request Maker -->
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Квитанция
+    :css
+      H1 {font-size: 12pt;}
+      p, ul, ol, h1 {margin-top:6px; margin-bottom:6px}
+      td {font-size: 9pt;}
+      small {font-size: 7pt;}
+      body {font-size: 10pt;}
+  %body{:bgcolor => "#ffffff"}
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:180mm; height:145mm;"}
+      %tbody
+        - 2.times do |index|
+
+          %tr{:valign => "top"}
+            %td{:align => "center", :style => "width:50mm; height:70mm; border:1pt solid #000000; #{'border-bottom:none;' if index == 0} border-right:none;"}
+              %b Извещение
+              %br/
+              %font{:style => "font-size:53mm"}
+                 
+                %br/
+              %b Кассир
+            %td{:align => "center", :style => "border:1pt solid #000000; #{'border-bottom:none;' if index == 0}"}
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:align => "right"}
+                      %small
+                        %i Форма № ПД-4
+                  %tr
+                    %td{:style => "border-bottom:1pt solid #000000;"} Индивидуальный предприниматель Тихомирова О.Ю.
+                  %tr
+                    %td{:align => "center"}
+                      %small (наименование получателя платежа)
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:style => "width:37mm; border-bottom:1pt solid #000000;"} 780217588910/
+                    %td{:style => "width:9mm;"}  
+                    %td{:style => "border-bottom:1pt solid #000000;"} 40802810138060000550
+                  %tr
+                    %td{:align => "center"}
+                      %small (ИНН получателя платежа)
+                    %td
+                      %small  
+                    %td{:align => "center"}
+                      %small (номер счета получателя платежа)
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td в 
+                    %td{:style => "width:73mm; border-bottom:1pt solid #000000;"} УДО № 1768 Московского банка Сбербанка России г. Москвы ОАО
+                    %td{:align => "right"} БИК  
+                    %td{:style => "width:33mm; border-bottom:1pt solid #000000;"} 044525225
+                  %tr
+                    %td
+                    %td{:align => "center"}
+                      %small (наименование банка получателя платежа)
+                    %td
+                    %td
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:nowrap => "nowrap", :width => "1%"} Номер кор./сч. банка получателя платежа  
+                    %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 30101 810 4 0000 0000225
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:style => "width:60mm; border-bottom:1pt solid #000000;"}
+                      Оплата заказа №
+                      = @order.number
+                      от
+                      = l @order.created_at, format: "%d.%m.%Y"
+                    %td{:style => "width:2mm;"}  
+                    %td{:style => "border-bottom:1pt solid #000000;"}  
+                  %tr
+                    %td{:align => "center"}
+                      %small (наименование платежа)
+                    %td
+                      %small  
+                    %td{:align => "center"}
+                      %small (номер лицевого счета (код) плательщика)
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:nowrap => "nowrap", :width => "1%"} Ф.И.О. плательщика  
+                    %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"}= @order.name
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:nowrap => "nowrap", :width => "1%"} Адрес плательщика  
+                    %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"}= "#{@order.region_title}, #{@order.city_title}, #{@order.address}"
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td
+                      Сумма платежа 
+                      %font{:style => "text-decoration:underline;"}= @order.total_price(true, true).to_i
+                       руб. 
+                      %font{:style => "text-decoration:underline;"}= @order.total_price(true, true).to_s.split('.')[1]
+                       коп.
+                    %td{:align => "right"}   Сумма платы за услуги  _____ руб. ____ коп.
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td Итого  _______ руб. ____ коп.
+                    %td{:align => "right"}   «______»________________ 201____ г.
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td
+                      %small
+                        С условиями приема указанной в платежном документе суммы,
+                        в т.ч. с суммой взимаемой платы за услуги банка, ознакомлен и согласен.
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+                %tbody
+                  %tr
+                    %td{:align => "right"}
+                      %b Подпись плательщика _____________________
+
+        / %tr{:valign => "top"}
+        /   %td{:align => "center", :style => "width:50mm; height:70mm; border:1pt solid #000000; border-right:none;"}
+        /     %b Извещение
+        /     %br/
+        /     %font{:style => "font-size:53mm"}
+        /        
+        /       %br/
+        /     %b Кассир
+        /   %td{:align => "center", :style => "border:1pt solid #000000;"}
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:align => "right"}
+        /             %small
+        /               %i Форма № ПД-4
+        /         %tr
+        /           %td{:style => "border-bottom:1pt solid #000000;"} Индивидуальный предприниматель Тихомирова О.Ю.
+        /         %tr
+        /           %td{:align => "center"}
+        /             %small (наименование получателя платежа)
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:style => "width:37mm; border-bottom:1pt solid #000000;"} 780217588910/
+        /           %td{:style => "width:9mm;"}  
+        /           %td{:style => "border-bottom:1pt solid #000000;"} 40802810138060000550
+        /         %tr
+        /           %td{:align => "center"}
+        /             %small (ИНН получателя платежа)
+        /           %td
+        /             %small  
+        /           %td{:align => "center"}
+        /             %small (номер счета получателя платежа)
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td в 
+        /           %td{:style => "width:73mm; border-bottom:1pt solid #000000;"} УДО № 1768 Московского банка Сбербанка России г. Москвы ОАО
+        /           %td{:align => "right"} БИК  
+        /           %td{:style => "width:33mm; border-bottom:1pt solid #000000;"} 044525225
+        /         %tr
+        /           %td
+        /           %td{:align => "center"}
+        /             %small (наименование банка получателя платежа)
+        /           %td
+        /           %td
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:nowrap => "nowrap", :width => "1%"} Номер кор./сч. банка получателя платежа  
+        /           %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 30101 810 4 0000 0000225
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:style => "width:60mm; border-bottom:1pt solid #000000;"}
+        /             Оплата заказа №
+        /             1883  от
+        /             13.01.2015
+        /           %td{:style => "width:2mm;"}  
+        /           %td{:style => "border-bottom:1pt solid #000000;"}  
+        /         %tr
+        /           %td{:align => "center"}
+        /             %small (наименование платежа)
+        /           %td
+        /             %small  
+        /           %td{:align => "center"}
+        /             %small (номер лицевого счета (код) плательщика)
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:nowrap => "nowrap", :width => "1%"} Ф.И.О. плательщика  
+        /           %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} Тестовый заказчик
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:nowrap => "nowrap", :width => "1%"} Адрес плательщика  
+        /           %td{:style => "border-bottom:1pt solid #000000;", :width => "100%"} 111024, Россия, г. Москва, тестовый заказ для получения квитанции сбера 
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td
+        /             Сумма платежа 
+        /             %font{:style => "text-decoration:underline;"}>  1735 
+        /              руб. 
+        /             %font{:style => "text-decoration:underline;"}>  00 
+        /              коп.
+        /           %td{:align => "right"}   Сумма платы за услуги  _____ руб. ____ коп.
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td Итого  _______ руб. ____ коп.
+        /           %td{:align => "right"}   «______»________________ 201____ г.
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td
+        /             %small
+        /               С условиями приема указанной в платежном документе суммы,
+        /               в т.ч. с суммой взимаемой платы за услуги банка, ознакомлен и согласен.
+        /     %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:122mm; margin-top:3pt;"}
+        /       %tbody
+        /         %tr
+        /           %td{:align => "right"}
+        /             %b Подпись плательщика _____________________
+    %br/
+    %h1 Внимание! В стоимость заказа не включена комиссия банка.
+    / Условия поставки
+    %h1
+      %b Метод оплаты:
+    %ol
+      %li Распечатайте квитанцию. Если у вас нет принтера, перепишите верхнюю часть квитанции и заполните по этому образцу стандартный бланк квитанции в вашем банке.
+      %li Вырежьте по контуру квитанцию.
+      %li Оплатите квитанцию в любом отделении банка, принимающего платежи от частных лиц.
+      %li Сохраните квитанцию до подтверждения исполнения заказа.
+    %h1
+      %b Условия поставки:
+    %ul
+      %li Отгрузка оплаченного товара производится после подтверждения факта платежа.
+      %li Идентификация платежа производится по квитанции, поступившей в наш банк.
+    %p
+      %b Примечание:
+      Индивидуальный предприниматель Тихомирова О.Ю.  не может гарантировать конкретные сроки проведения вашего платежа. За дополнительной информацией о сроках доставки квитанции в банк получателя, обращайтесь в свой банк.
+
+    %h1
+      = link_to 'Вернуться на сайт', root_path, class: 'btn btn-success'

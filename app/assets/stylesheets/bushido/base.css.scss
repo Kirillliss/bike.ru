@@ -1,0 +1,63 @@
+.bushido {
+  a.logo {
+    padding: 0px;
+    margin: 0px;
+    top: 10px;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+
+  .catalog {
+    &.left {
+      text-align: left;
+    }
+  }
+}
+
+#slid .item {
+  max-height: 420px;
+  display: block;
+  img {
+    width: 100%;
+  }
+}
+
+.product_th {
+  img {
+    width: 100%;
+  }
+}
+
+.frontcat {
+  overflow: hidden;
+  img {
+    width: 168px !important;
+  }
+}
+
+.flash .alert {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.shopping-cart {
+  td {
+    &.name {
+      padding-left: 5px;
+      a {
+        font-size: 16px;
+      }
+    }
+    &.delete {
+      a {
+        padding-top: 10px;
+      }
+    }
+  }
+
+}
+
+.redalert{
+  color: #ff6f69 !important;
+}

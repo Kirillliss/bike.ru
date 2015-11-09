@@ -1,0 +1,15 @@
+.page-header
+  %h2
+    = @post.new_record? ? 'Новая' : 'Редактируем'
+    новость
+= simple_form_for(@post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :body, input_html: {class: 'summernote', rows: 40, colls: 120, language: 'ru' }
+    / = f.input :image
+
+  .actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отменить', posts_path, class: 'btn btn-default'

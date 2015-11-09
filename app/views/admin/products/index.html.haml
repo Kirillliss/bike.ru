@@ -1,0 +1,33 @@
+.page-header
+  %h1 Таблица товаров
+
+%table.table.table-striped.table-bordered.datatable
+  %thead
+    %th Наименование
+    %th Описание
+    %th Старая цена
+    %th Новая цена
+    %th Скидка
+    %th Действия
+  %tfoot
+    %th Наименование
+    %th Описание
+    %th Старая цена
+    %th Новая цена
+    %th Скидка
+    %th Действия
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td.col-md-2
+          = product.title
+          %br
+          = image_tag product.image_url, width: 200
+        %td=raw product.description
+        %td= product.old_price
+        %td= product.price
+        %td= link_to product.discount.title, product.discount if product.discount
+        %td.col-md-2
+          .btn-group.btn-group-xs.pull-right
+            = link_to 'Редактировать', edit_admin_product_path(product), class: 'btn btn-default'
+            = link_to 'Удалить', [:admin, product], :method => :delete, :data => { :confirm => 'Точно удалить?' }, class: 'btn btn-sm btn-danger'

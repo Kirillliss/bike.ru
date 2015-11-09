@@ -1,0 +1,4 @@
+%li
+  = link_to line_item.product do
+    %b= line_item.product.title
+    %span x#{line_item.quantity} #{number_to_currency(line_item.total_price)}

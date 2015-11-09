@@ -1,0 +1,24 @@
+.page-header
+  %h2
+    = @person.new_record? ? 'Создаем нового' : 'Редактируем'
+    человека в команде
+
+= simple_form_for(@person) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = image_tag @person.avatar, size: '300' if @person.avatar.present?
+    = f.input :avatar
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :phone
+    = f.input :job_title
+    = f.input :fb_url
+    = f.input :vk_url
+    = f.input :email
+    = f.input :position
+    = f.input :published
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отменить', people_path, class: 'btn btn-default'

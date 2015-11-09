@@ -1,0 +1,39 @@
+.page-header
+  %h2
+    Люди в команде
+    = link_to 'Добавить', new_person_path, class: 'btn btn-success btn-sm'
+
+%table.table.table-stripped.table-bordered
+
+  %tr
+    %th Аватар
+    %th Опубликован на сайте
+    %th Имя
+    %th Фамилия
+    %th Телефон
+    %th Должность
+    %th Facebook
+    %th Вконтакте
+    %th Email
+    %th Позиция
+    %th
+    %th
+
+  - @people.each do |person|
+    %tr
+      %td= image_tag person.avatar, size: '70'
+      %td
+        - if person.published?
+          .btn.btn-success.btn-block
+        - else
+          .btn.btn-danger.btn-block
+      %td= person.first_name
+      %td= person.last_name
+      %td= person.phone
+      %td= person.job_title
+      %td= person.fb_url
+      %td= person.vk_url
+      %td= person.email
+      %td= person.position
+      %td= link_to 'Изменить', edit_person_path(person), class: 'btn btn-default'
+      %td= link_to 'Удалить', person, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

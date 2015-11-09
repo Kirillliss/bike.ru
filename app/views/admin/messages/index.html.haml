@@ -1,0 +1,24 @@
+%h1
+  Сообщения от гостей
+
+%br
+
+%table.table.table-stripped.table-bordered.datatable
+  %thead
+    %tr
+      %th Имя
+      %th Email
+      %th Сообщение
+      %th
+
+  %tbody
+    - @messages.each do |message|
+      %tr
+        %td= message.name
+        %td= message.email
+        %td= message.message
+        %td= link_to 'Удалить', message, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'
+
+
+
+

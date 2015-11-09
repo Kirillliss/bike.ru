@@ -1,0 +1,487 @@
+!!!
+/[if IE 8] <html lang="en" class="ie8">
+/ [if !IE]><!
+%html{:lang => "en"}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Color Admin | Dashboard
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    / ================== BEGIN BASE CSS STYLE ==================
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/font-awesome/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/css/animate.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/css/style.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/css/style-responsive.min.css", :rel => "stylesheet"}/
+    %link#theme{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/css/theme/default.css", :rel => "stylesheet"}/
+    / ================== END BASE CSS STYLE ==================
+    / ================== BEGIN PAGE LEVEL STYLE ==================
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/bootstrap-datepicker/css/datepicker.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assetshttp://skibike.dev/admin/index.html/plugins/bootstrap-datepicker/css/datepicker3.css", :rel => "stylesheet"}/
+    %link{:href => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/gritter/css/jquery.gritter.css", :rel => "stylesheet"}/
+    / ================== END PAGE LEVEL STYLE ==================
+    / ================== BEGIN BASE JS ==================
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/pace/pace.min.js"}
+    / ================== END BASE JS ==================
+  %body
+    / begin #page-loader
+    #page-loader.fade.in
+      %span.spinner
+    / end #page-loader
+    / begin #page-container
+    #page-container.fade.page-sidebar-fixed.page-header-fixed
+      / begin #header
+      #header.header.navbar.navbar-default.navbar-fixed-top
+        / begin container-fluid
+        .container-fluid
+          / begin mobile sidebar expand / collapse button
+          .navbar-header
+            %a.navbar-brand{:href => "#"}
+              %span.navbar-logo
+              Spin-Sport
+            %button.navbar-toggle{"data-click" => "sidebar-toggled", :type => "button"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          / end mobile sidebar expand / collapse button
+          / begin header navigation right
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %form.navbar-form.full-width
+                .form-group
+                  %input.form-control{:placeholder => "Enter keyword", :type => "text"}/
+                  %button.btn.btn-search{:type => "submit"}
+                    %i.fa.fa-search
+            %li.dropdown
+              %a.dropdown-toggle.f-s-14{"data-toggle" => "dropdown", :href => "javascript:;"}
+                %i.fa.fa-bell-o
+                %span.label 5
+              %ul.dropdown-menu.media-list.pull-right.animated.fadeInDown
+                %li.dropdown-header Оповещения (5)
+                %li.media
+                  %a{:href => "javascript:;"}
+                    .media-left
+                      %i.fa.fa-bug.media-object.bg-red
+                    .media-body
+                      %h6.media-heading Server Error Reports
+                      .text-muted.f-s-11 3 minutes ago
+                %li.media
+                  %a{:href => "javascript:;"}
+                    .media-left
+                      %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-1.jpg"}/
+                    .media-body
+                      %h6.media-heading John Smith
+                      %p Quisque pulvinar tellus sit amet sem scelerisque tincidunt.
+                      .text-muted.f-s-11 25 minutes ago
+                %li.media
+                  %a{:href => "javascript:;"}
+                    .media-left
+                      %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-2.jpg"}/
+                    .media-body
+                      %h6.media-heading Olivia
+                      %p Quisque pulvinar tellus sit amet sem scelerisque tincidunt.
+                      .text-muted.f-s-11 35 minutes ago
+                %li.media
+                  %a{:href => "javascript:;"}
+                    .media-left
+                      %i.fa.fa-plus.media-object.bg-green
+                    .media-body
+                      %h6.media-heading New User Registered
+                      .text-muted.f-s-11 1 hour ago
+                %li.media
+                  %a{:href => "javascript:;"}
+                    .media-left
+                      %i.fa.fa-envelope.media-object.bg-blue
+                    .media-body
+                      %h6.media-heading New Email From John
+                      .text-muted.f-s-11 2 hour ago
+                %li.dropdown-footer.text-center
+                  %a{:href => "javascript:;"} View more
+            %li.dropdown.navbar-user
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:;"}
+                %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-13.jpg"}/
+                %span.hidden-xs Adam Schwartz
+                %b.caret
+              %ul.dropdown-menu.animated.fadeInLeft
+                %li.arrow
+                %li
+                  %a{:href => "javascript:;"} Edit Profile
+                %li
+                  %a{:href => "javascript:;"}
+                    %span.badge.badge-danger.pull-right 2
+                    Inbox
+                %li
+                  %a{:href => "javascript:;"} Calendar
+                %li
+                  %a{:href => "javascript:;"} Setting
+                %li.divider
+                %li
+                  %a{:href => "javascript:;"} Log Out
+          / end header navigation right
+        / end container-fluid
+      / end #header
+      / begin #sidebar
+      #sidebar.sidebar
+        / begin sidebar scrollbar
+        %div{"data-height" => "100%", "data-scrollbar" => "true"}
+          / begin sidebar user
+          %ul.nav
+            %li.nav-profile
+              .image
+                %a{:href => "javascript:;"}
+                  %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-13.jpg"}/
+              .info
+                Sean Ngu
+                %small Front end developer
+          / end sidebar user
+          / begin sidebar nav
+          %ul.nav
+            %li.nav-header Navigation
+            %li.has-sub.active
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-laptop
+                %span Dashboard
+              %ul.sub-menu
+                %li.active
+                  %a{:href => "index.html"} Dashboard v1
+                %li
+                  %a{:href => "index_v2.html"} Dashboard v2
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %span.badge.pull-right 10
+                %i.fa.fa-inbox
+                %span Email
+              %ul.sub-menu
+                %li
+                  %a{:href => "email_inbox.html"} Inbox v1
+                %li
+                  %a{:href => "email_inbox_v2.html"} Inbox v2
+                %li
+                  %a{:href => "email_compose.html"} Compose
+                %li
+                  %a{:href => "email_detail.html"} Detail
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-suitcase
+                %span
+                  UI Elements
+                  %span.label.label-theme.m-l-5 NEW
+              %ul.sub-menu
+                %li
+                  %a{:href => "ui_general.html"} General
+                %li
+                  %a{:href => "ui_typography.html"} Typography
+                %li
+                  %a{:href => "ui_tabs_accordions.html"} Tabs & Accordions
+                %li
+                  %a{:href => "ui_modal_notification.html"} Modal & Notification
+                %li
+                  %a{:href => "ui_widget_boxes.html"} Widget Boxes
+                %li
+                  %a{:href => "ui_media_object.html"} Media Object
+                %li
+                  %a{:href => "ui_buttons.html"} Buttons
+                %li
+                  %a{:href => "ui_icons.html"} Icons
+                %li
+                  %a{:href => "ui_simple_line_icons.html"} Simple Line Icons
+                %li
+                  %a{:href => "ui_ionicons.html"}
+                    Ionicons
+                    %i.fa.fa-paper-plane.text-theme.m-l-5
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-file-o
+                %span Form Stuff
+              %ul.sub-menu
+                %li
+                  %a{:href => "form_elements.html"} Form Elements
+                %li
+                  %a{:href => "form_plugins.html"} Form Plugins
+                %li
+                  %a{:href => "form_slider_switcher.html"} Form Slider + Switcher
+                %li
+                  %a{:href => "form_validation.html"} Form Validation
+                %li
+                  %a{:href => "form_wizards.html"} Wizards
+                %li
+                  %a{:href => "form_wizards_validation.html"} Wizards + Validation
+                %li
+                  %a{:href => "form_wysiwyg.html"} WYSIWYG
+                %li
+                  %a{:href => "form_editable.html"} X-Editable
+                %li
+                  %a{:href => "form_multiple_upload.html"} Multiple File Upload
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-th
+                %span
+                  Tables
+                  %span.label.label-theme.m-l-5 NEW
+              %ul.sub-menu
+                %li
+                  %a{:href => "table_basic.html"} Basic Tables
+                %li.has-sub
+                  %a{:href => "javascript:;"}
+                    %b.caret.pull-right
+                    Managed Tables
+                    %i.fa.fa-paper-plane.text-theme.m-l-5
+                  %ul.sub-menu
+                    %li
+                      %a{:href => "table_manage.html"} Default
+                    %li
+                      %a{:href => "table_manage_autofill.html"}
+                        Autofill
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_colreorder.html"}
+                        ColReorder
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_colvis.html"}
+                        ColVis
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_fixed_columns.html"}
+                        Fixed Column
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_fixed_header.html"}
+                        Fixed Header
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_keytable.html"}
+                        KeyTable
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_responsive.html"}
+                        Responsive
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_scroller.html"}
+                        Scroller
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+                    %li
+                      %a{:href => "table_manage_tabletools.html"}
+                        TableTools
+                        %i.fa.fa-paper-plane.text-theme.m-l-5
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-star
+                %span Front End
+              %ul.sub-menu
+                %li
+                  %a{:href => "../../frontend/one-page-parallax/index.html", :target => "_blank"} One Page Parallax
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-envelope
+                %span Email Template
+              %ul.sub-menu
+                %li
+                  %a{:href => "email_system.html"} System Template
+                %li
+                  %a{:href => "email_newsletter.html"} Newsletter Template
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-area-chart
+                %span Chart
+              %ul.sub-menu
+                %li
+                  %a{:href => "chart-flot.html"} Flot Chart
+                %li
+                  %a{:href => "chart-morris.html"} Morris Chart
+            %li
+              %a{:href => "calendar.html"}
+                %i.fa.fa-calendar
+                %span Calendar
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-map-marker
+                %span Map
+              %ul.sub-menu
+                %li
+                  %a{:href => "map_vector.html"} Vector Map
+                %li
+                  %a{:href => "map_google.html"} Google Map
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-camera
+                %span Gallery
+              %ul.sub-menu
+                %li
+                  %a{:href => "gallery.html"} Gallery v1
+                %li
+                  %a{:href => "gallery_v2.html"} Gallery v2
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-cogs
+                %span
+                  Page Options
+                  %span.label.label-theme.m-l-5 NEW
+              %ul.sub-menu
+                %li
+                  %a{:href => "page_blank.html"} Blank Page
+                %li
+                  %a{:href => "page_with_footer.html"} Page with Footer
+                %li
+                  %a{:href => "page_without_sidebar.html"} Page without Sidebar
+                %li
+                  %a{:href => "page_with_right_sidebar.html"} Page with Right Sidebar
+                %li
+                  %a{:href => "page_with_minified_sidebar.html"} Page with Minified Sidebar
+                %li
+                  %a{:href => "page_with_two_sidebar.html"} Page with Two Sidebar
+                %li
+                  %a{:href => "page_with_line_icons.html"} Page with Line Icons
+                %li
+                  %a{:href => "page_with_ionicons.html"}
+                    Page with Ionicons
+                    %i.fa.fa-paper-plane.text-theme.m-l-5
+                %li
+                  %a{:href => "page_full_height.html"} Full Height Content
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-gift
+                %span Extra
+              %ul.sub-menu
+                %li
+                  %a{:href => "extra_timeline.html"} Timeline
+                %li
+                  %a{:href => "extra_coming_soon.html"} Coming Soon Page
+                %li
+                  %a{:href => "extra_search_results.html"} Search Results
+                %li
+                  %a{:href => "extra_invoice.html"} Invoice
+                %li
+                  %a{:href => "extra_404_error.html"} 404 Error Page
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-key
+                %span Login
+              %ul.sub-menu
+                %li
+                  %a{:href => "login.html"} Login
+                %li
+                  %a{:href => "login_v2.html"} Login v2
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-cubes
+                %span
+                  Version
+                  %span.label.label-theme.m-l-5 NEW
+              %ul.sub-menu
+                %li
+                  %a{:href => "javascript:;"} HTML
+                %li
+                  %a{:href => "../ajax/index.html"}
+                    AJAX
+                    %i.fa.fa-paper-plane.text-theme.m-l-5
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-medkit
+                %span Helper
+              %ul.sub-menu
+                %li
+                  %a{:href => "helper_css.html"} Predefined CSS Classes
+            %li.has-sub
+              %a{:href => "javascript:;"}
+                %b.caret.pull-right
+                %i.fa.fa-align-left
+                %span Menu Level
+              %ul.sub-menu
+                %li.has-sub
+                  %a{:href => "javascript:;"}
+                    %b.caret.pull-right
+                    Menu 1.1
+                  %ul.sub-menu
+                    %li.has-sub
+                      %a{:href => "javascript:;"}
+                        %b.caret.pull-right
+                        Menu 2.1
+                      %ul.sub-menu
+                        %li
+                          %a{:href => "javascript:;"} Menu 3.1
+                        %li
+                          %a{:href => "javascript:;"} Menu 3.2
+                    %li
+                      %a{:href => "javascript:;"} Menu 2.2
+                    %li
+                      %a{:href => "javascript:;"} Menu 2.3
+                %li
+                  %a{:href => "javascript:;"} Menu 1.2
+                %li
+                  %a{:href => "javascript:;"} Menu 1.3
+            / begin sidebar minify button
+            %li
+              %a.sidebar-minify-btn{"data-click" => "sidebar-minify", :href => "javascript:;"}
+                %i.fa.fa-angle-double-left
+            / end sidebar minify button
+          / end sidebar nav
+        / end sidebar scrollbar
+      .sidebar-bg
+      / end #sidebar
+      / begin #content
+      #content.content
+        = yield
+      / begin scroll to top btn
+      %a.btn.btn-icon.btn-circle.btn-success.btn-scroll-to-top.fade{"data-click" => "scroll-top", :href => "javascript:;"}
+        %i.fa.fa-angle-up
+      / end scroll to top btn
+    / end page container
+    / ================== BEGIN BASE JS ==================
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery/jquery-1.9.1.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/bootstrap/js/bootstrap.min.js"}
+    /[if lt IE 9]
+      <script src=http://seantheme.com/color-admin-v1.5/admin/html/assets/crossbrowserjs/html5shiv.js"></script>
+      <script src=http://seantheme.com/color-admin-v1.5/admin/html/assets/crossbrowserjs/respond.min.js"></script>
+      <script src=http://seantheme.com/color-admin-v1.5/admin/html/assets/crossbrowserjs/excanvas.min.js"></script>
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/slimscroll/jquery.slimscroll.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-cookie/jquery.cookie.js"}
+    / ================== END BASE JS ==================
+    / ================== BEGIN PAGE LEVEL JS ==================
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/gritter/js/jquery.gritter.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/flot/jquery.flot.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/flot/jquery.flot.time.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/flot/jquery.flot.resize.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/flot/jquery.flot.pie.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/sparkline/jquery.sparkline.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/js/dashboard.min.js"}
+    %script{:src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/js/apps.min.js"}
+    / ================== END PAGE LEVEL JS ==================
+    :javascript
+      $(document).ready(function() {
+        App.init();
+        Dashboard.init();
+      });
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-53034621-1', 'auto');
+      ga('send', 'pageview');

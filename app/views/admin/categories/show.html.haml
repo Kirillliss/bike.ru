@@ -1,0 +1,48 @@
+.row-fluid
+  .col-md-4= render 'categories_tree'
+  .col-md-8
+    %h3
+      = @category.title
+      %br
+      %small
+        = @category.one_ass_id
+      %br
+      %small
+        - if @category.published?
+          %span.label.label-success Категория видна на сайте
+        - else
+          %span.label.label-default Категория не видна на сайте
+        %em.pull-right{style: 'font-size: 14px'}
+          - if @category.project_names.present?
+            Относится к проектам:
+            = @category.project_names
+          - else
+            Проект не выбран
+    %p
+      Относится к скидке:
+      = link_to @category.discount.title, @category.discount if @category.discount
+    %hr
+    .btn-group.btn-group-xs.pull-right
+      = link_to 'Редактировать категорию', edit_admin_category_path(@category), class: 'btn btn-default'
+      = link_to 'Удалить', [:admin, @category], :method => :delete, :data => { :confirm => 'Точно удалить?' }, class: 'btn btn-sm btn-danger'
+      = link_to 'Добавить новый товар', new_admin_category_product_path(@category), class: 'btn btn-success' unless @category.root?
+    .clearfix
+    %br
+    %ol.breadcrumb
+      - @category.ancestors.each do |cat|
+        %li= link_to cat.title, [:admin, cat]
+      %li.active= @category.title
+    - if @category.children.any?
+      - @category.children.order(:position).each_slice(2) do |children|
+        .row
+          - children.each do |child|
+            .col-md-6
+              .thumbnail
+                = link_to [:admin, child] do
+                  = image_tag child.image_url(:category)
+                  .caption
+                    %center
+                      %h4= child.title
+    = render @category.products
+    - if @category.products.empty?
+      %p.well Нет товаров этой категории

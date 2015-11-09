@@ -1,0 +1,14 @@
+%h3
+  Список импортов
+  .btn-group.btn-group-xs.pull-right
+    = link_to 'Новый импорт', admin_imports_path, class: "btn btn-primary"
+
+%br
+.list-group
+  - @imports.each do |import|
+    - title = ""
+    - title += if import.stock then import.stock.title else "" end
+    - title += if import.proccessed_at then "(#{l import.proccessed_at, format: :long})" else "(пока не загружено)" end
+    = link_to_unless_current title, [:admin, import], class: "list-group-item" do
+      = link_to title, [:admin, import], class: "list-group-item active"
+

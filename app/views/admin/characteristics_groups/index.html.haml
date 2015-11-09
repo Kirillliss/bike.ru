@@ -1,0 +1,21 @@
+%h1
+  Группы характеристик
+  = link_to 'Новая группа характеристик', new_characteristics_group_path, class: 'btn btn-success'
+
+%table.table.table-stripped.table-bordered.datatable
+
+  %thead
+    %tr
+      %th id
+      %th Название
+      / %th
+      %th
+      %th
+  %tbody
+    - @characteristics_groups.each do |characteristics_group|
+      %tr
+        %td= characteristics_group.id
+        %td= characteristics_group.title
+        / %td= link_to 'Показать', characteristics_group, class: 'btn btn-default'
+        %td= link_to 'Редактировать', edit_characteristics_group_path(characteristics_group), class: 'btn btn-default'
+        %td= link_to 'Удалить', characteristics_group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'

@@ -1,0 +1,14 @@
+.page-header
+  %h1
+    = @tizer.new_record? ? 'Новый' : 'Редактируем'
+    Тизер
+
+= simple_form_for([:admin, @tizer]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :url
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'

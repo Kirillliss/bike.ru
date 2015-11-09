@@ -1,0 +1,22 @@
+.page-header
+  %h1 Клиенты
+
+%table.table.table-stripped.table-bordered
+  %tr
+    %th Дата регистрации
+    %th ФИО
+    %th Телефон
+    %th Email
+    %th Заказов
+    %th
+
+  - @users.each do |user|
+    %tr
+      %td=l user.created_at, format: "%d.%m.%Y"
+      %td= user.full_name
+      %td= user.phone
+      %td= user.email
+      %td= user.orders.count
+      %td= link_to 'Подробности', [:admin, user]
+
+%br

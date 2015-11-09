@@ -1,0 +1,10 @@
+= simple_form_for(@characteristic) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+
+    = f.association :characteristic_values, label_method: :value, input_html: { class: 'select2'}
+
+  .form-actions
+    = f.button :submit, "Готово", class: 'btn btn-success'

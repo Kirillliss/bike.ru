@@ -1,0 +1,35 @@
+%h1
+  Купоны
+  = link_to 'Добавить', new_admin_coupon_path, class: 'btn btn-success'
+
+%table.table.table-stripped.table-bordered.datatable
+
+  %thead
+    %tr
+      %th Скидка(%)
+      %th Код
+      %th Валиден до
+      %th Вечно
+      %th Многоразовый
+      %th Корзина
+      %th Использован
+      %th Заказ
+      %th
+      %th
+
+  %tbody
+    - @coupons.each do |coupon|
+      %tr
+        %td= coupon.amount
+        %td= coupon.code
+        %td= l coupon.valid_till, format: :long
+        %td= coupon.permanent
+        %td= coupon.reusable
+        %td= coupon.cart
+        %td= l coupon.used_at, format: :long if coupon.used_at
+        / %td= link_to "Заказ", [:admin, coupon.order], class: 'btn btn-default'
+        %td= link_to coupon.order.id, [:admin, coupon.order] if coupon.order
+        %td= link_to 'Редактировать', edit_admin_coupon_path(coupon), class: 'btn btn-default'
+        %td= link_to 'Удалить', [:admin, coupon], :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'
+
+

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Продукт 1
+  = @special_offer.product_one
+%p
+  %b Продукт 2
+  = @special_offer.product_two
+%p
+  %b Специальаня цена
+  = @special_offer.special_price
+%p
+  %b Опубликованно
+  = @special_offer.published
+
+= link_to 'Редактировать', edit_admin_special_offer_path(@special_offer), class: 'btn btn-default'
+\|
+= link_to 'Просмотр всех', admin_special_offers_path, class: 'btn btn-default'

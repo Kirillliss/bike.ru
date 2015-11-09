@@ -1,0 +1,33 @@
+- content_for :left_menu do
+  = render :partial => 'pages/pages_menu'
+
+%section.log-reg.container
+  %p#notice= notice
+  %h2
+    Заказ номер
+    = @order.id
+  %p
+  - if @order.can_cancel?
+    = button_to 'Отменить', cancel_admin_order_path(@order), class: 'btn btn-default'
+  %p
+    %b Статус:
+    = @order.state_rus
+  %p
+    %b Адрес:
+    = @order.address
+  %p
+    %b Вид оплаты:
+    = @order.pay_type
+
+
+  %table
+    - @order.line_items.each do |line_item|
+      %tr
+        %td
+          = line_item.quantity
+          \×
+        %td= line_item.product.title
+        %td.item_price= number_to_currency(line_item.total_price)
+    %tr.total_line
+      %td{colspan: "2"} Итого
+      %td.total_cell= number_to_currency(@order.total_price)

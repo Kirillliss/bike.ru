@@ -1,0 +1,43 @@
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Новости
+
+/ Blog Sidebar Right
+%section.blog
+  .container
+    .row
+      / Left Column
+      .col-lg-9.col-md-9
+        %h2.title Новости
+        - unless @posts.nil?
+          - @posts.each do |post|
+            / Post
+            .post
+              %h3.title
+                %a{:href => posts_show_path(post)}= post.title
+              / %img{:alt => "Blog post", :src => "img/blog/blog_01.jpg"}/
+              %p.p-style3= post.body.html_safe
+              %footer
+                / %a.btn.btn-success{:href => posts_show_path(post)} Читать
+                / .share
+                /   %a{:href => "#"}
+                /     %i.fa.fa-twitter
+                /   %a{:href => "#"}
+                /     %i.fa.fa-facebook-square
+                /   %a{:href => "#"}
+                /     %i.fa.fa-pinterest-square
+                /   %a{:href => "#"}
+                /     %i.fa.fa-envelope
+                %ul.meta
+                  %li
+                    %i.fa.fa-user
+                    %a{:href => root_path} Spine-Sport
+                  %li
+                    %i.fa.fa-calendar
+                    %a{:href => "#"}= l post.created_at, format: :short
+                  / %li
+                  /   %i.fa.fa-comment
+                  /   %a{:href => "#"} Comments (34)
+
+/ Blog Sidebar Right Close

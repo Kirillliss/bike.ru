@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @part.title
+%p
+  %b Code:
+  = @part.code
+%p
+  %b Body:
+  = @part.body
+
+= link_to 'Edit', edit_part_path(@part)
+\|
+= link_to 'Back', parts_path

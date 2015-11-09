@@ -1,0 +1,110 @@
+!!! 5
+%html(lang="ru")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= yield(:title).empty? ? current_project.title : [yield(:title),  current_project.title].join(' | ')
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true
+    %script{src: "//cdn.ckeditor.com/4.4.2/standard/ckeditor.js"}
+
+    / %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.0/summernote.min.js", :type => "text/javascript"}
+    / %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.0/summernote.min.css", :rel => "stylesheet"}/
+    / %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.0/summernote-bs3.min.css", :rel => "stylesheet"}/
+
+    = javascript_include_tag 'admin', 'data-turbolinks-track' => true
+    %script{src: "//cdn.ckeditor.com/4.4.2/standard/adapters/jquery.js"}
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Стогл Навигации
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to current_project.title, admin_root_path, class: 'navbar-brand'
+          / %a.navbar-brand{href: "/"} SuperKosilka
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Наполнение сайтов
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Таблица товаров', admin_products_path
+                %li= link_to 'Новости', posts_path
+                %li= link_to 'Каталог товаров', admin_categories_path
+                %li= link_to 'Банеры главной страницы', home_page_banners_path
+                %li.divider
+                %li= link_to 'Страницы', admin_pages_path
+                %li= link_to 'Части для страниц', parts_path
+                %li= link_to 'Люди в команде', people_path
+                %li.divider
+                %li= link_to 'Спецпредложения', admin_deals_path
+                %li= link_to 'Специальные предложения(2в1)', admin_special_offers_path
+                %li= link_to 'Купоны', admin_coupons_path
+                %li= link_to 'Скидки', discounts_path
+                %li.divider
+                %li= link_to 'Импорт от поставщиков из CSV', admin_imports_path
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Продажи
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Заказы', admin_orders_path
+                %li= link_to 'Клиенты', admin_users_path
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Реклама
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Тизеры', admin_tizers_path
+                %li= link_to 'Баннеры', admin_banners_path
+            %li= link_to 'Сообщения от гостей', messages_path
+
+          %ul.nav.navbar-nav.pull-right
+            %li.loading-indicator
+              = link_to '#' do
+                Зарузка&nbsp;
+                = image_tag 'ajax-loader.gif'
+            %li= link_to current_project.title, root_url
+            %li
+              = link_to '#' do
+                %i.fa.fa-tree
+                NY
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Настройки
+                %b.caret
+              %ul#settings.dropdown-menu
+                %li= link_to 'Проекты', admin_projects_path
+                %li= link_to 'Просмотр import.xml', ImportOneAss.first.import_url if ImportOneAss.first
+                %li= link_to 'Просмотр offers.xml', ImportOneAss.first.offers_url if ImportOneAss.first
+                %li= link_to 'Названия характеристики', characteristic_names_path
+                %li= link_to 'Значения характеристик', characteristic_values_path
+                %li= link_to 'Группы характеристик', characteristics_groups_path
+                %li= link_to 'Строки групп характеристик', characteristics_group_rows_path
+                %li= link_to 'Значения строк групп характеристик', characteristics_group_vls_path
+                / %li
+                /   %a{href: "#"} Контакты
+                / %li
+                /   %a{href: "#"} Рассылки
+                / %li.divider
+                / %li.dropdown-header Nav header
+                / %li
+                /   %a{href: "#"} Настройки
+                / %li
+                /   %a{href: "#"} Поиск
+        / /.nav-collapse
+    / Begin page content
+    .container
+      = yield
+      %br
+    #footer
+      .container
+        %p.text-muted
+          Сделано и поддерживается ребятами из компании
+          = link_to 'Deppkind &mdash; Ruby On Rails Shop'.html_safe, 'http://www.deppkind.com/'

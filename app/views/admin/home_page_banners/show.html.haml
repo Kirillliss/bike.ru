@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @home_page_banner.title
+%p
+  %b Title red:
+  = @home_page_banner.title_red
+%p
+  %b Title small:
+  = @home_page_banner.title_small
+%p
+  %b Description:
+  = @home_page_banner.description
+%p
+  %b Main button title:
+  = @home_page_banner.main_button_title
+%p
+  %b Main button url:
+  = @home_page_banner.main_button_url
+%p
+  %b Secondary button on:
+  = @home_page_banner.secondary_button_on
+%p
+  %b Secondary button title:
+  = @home_page_banner.secondary_button_title
+%p
+  %b Secondary button url:
+  = @home_page_banner.secondary_button_url
+%p
+  %b Image big:
+  = @home_page_banner.image_big
+%p
+  %b Image small:
+  = @home_page_banner.image_small
+
+= link_to 'Edit', edit_home_page_banner_path(@home_page_banner)
+\|
+= link_to 'Back', home_page_banners_path

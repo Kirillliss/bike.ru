@@ -1,0 +1,25 @@
+- content_for :left_menu do
+  = render :partial => 'pages/pages_menu'
+
+%section.log-reg.container
+  .page-header
+    %h3 Редактирование профиля
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = f.error_notification
+    .clearfix
+      = f.label :full_name
+      .input= f.input :full_name, required: true, autofocus: true, label: false
+    .clearfix
+      = f.label :email
+      .input= f.input :email, required: true, label: false
+    .clearfix
+      = f.label :password
+      .input= f.input :password, autocomplete: "off", hint: "оставьте пустым если не будете менять", required: false, label: false
+    .clearfix
+      = f.label :password
+      .input= f.input :password_confirmation, required: false, label: false
+    .clearfix
+      = f.label :current_password
+      .input= f.input :current_password, hint: "нужен текущий пароль для сохранения изменений", required: true, label: false
+    .actions
+      = f.button :submit, "Обновить данные"

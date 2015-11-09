@@ -1,0 +1,37 @@
+body { 
+  *:not(.fa) {
+    // font-family: 'Fira Sans', sans-serif !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+  }
+}
+.list-group.list-categ {
+
+  .list-group-item {
+    padding: 14px 16px 10px 16px;
+
+    &.current {
+      // background: #fff !important;
+      color: #428bca !important;
+      font-weight: bold;
+    }
+    &.child {
+      padding-left: 30px;
+      font-size: 12px;
+    }
+    &.grandson {
+      padding-left: 40px;
+      font-size: 11px;
+    }
+  }
+}
+
+.caption {
+  &.prod-caption {
+    // height: 190px;
+
+    p.dsc {
+      min-height: 224px;
+      display: block;
+    }
+  }
+}

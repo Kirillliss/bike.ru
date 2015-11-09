@@ -1,0 +1,34 @@
+%h1 Данные заказа:
+
+%p
+  %b Номер заказа:
+  = @order.number
+%p
+  %b Телефон для связи:
+  = @order.user.phone
+%p
+  %b Вид оплаты:
+  = @order.pay_type
+%p
+  %b Адрес:
+  = @order.address
+%p
+  %b Тип доставки:
+  = @order.kind_of_shipping
+%p
+  %b Цена доставки:
+  = number_to_currency @order.price_of_shipping
+
+%table
+  - @order.line_items.each do |line_item|
+    %tr
+      %td
+        = line_item.quantity
+        \×
+      %td= link_to line_item.product.title, product_url(line_item.product)
+      %td= line_item.characteristics_from_offer
+      %td= number_to_currency(line_item.total_price)
+  %tr
+    %td{colspan: "2"}
+      %b Итого c доставкой
+    %td= number_to_currency(@order.total_price + @order.price_of_shipping)

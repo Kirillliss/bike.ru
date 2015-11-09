@@ -1,0 +1,28 @@
+.product
+  .page-header
+    %h4= link_to product.title, [:admin, product.category, product]
+  .row
+    .col-md-5
+      - if product.images.any?
+        %ul.bxslider{style: 'width: 330px'}
+          - product.images.each do |image|
+            %li= image_tag image.image_url(:product)
+    .col-md-7
+      %table.table.table-stripped
+        - if product.old_price.present?
+          %tr
+            %th Старая Цена:
+            %td
+              %strike= number_to_currency product.old_price, unit: 'руб.'
+        - product.product_offers.each do |offer|
+          -offer.offer_prices.each do |price|
+            - if price.title
+              %tr
+                %th Цена:
+                %td= price.title
+        %tr
+          %th Код товара1:
+          %td= product.article
+        %tr
+          %td{colspan: 2}
+            %p= truncate_html(raw(product.description), length: 220, omission: '...(continued)')

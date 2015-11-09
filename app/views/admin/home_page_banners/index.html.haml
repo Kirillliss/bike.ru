@@ -1,0 +1,36 @@
+%h1
+  Банеры для главной страницы
+  = link_to 'Новый банер для главной страницы', new_home_page_banner_path, class: 'btn btn-primary'
+
+%table.table.table-stripped.table-bordered
+  %thead
+    %tr
+      %th Опубликован
+      %th Заголовок
+      %th Заголовок красный
+      %th Заголовок смол
+
+      %th Большая картинка
+      %th Маленькая картинка
+
+      %th
+      %th
+
+
+  %tbody
+    - @home_page_banners.each do |home_page_banner|
+      %tr
+        %td= home_page_banner.published? ? 'Да' : 'Нет'
+        %td= home_page_banner.title
+        %td= home_page_banner.title_red
+        %td= home_page_banner.title_small
+
+        %td= image_tag home_page_banner.image_big.url, size: '70x70'
+        %td= image_tag home_page_banner.image_small.url, size: '70x70'
+
+        / %td= link_to 'Show', home_page_banner
+        %td= link_to 'Редактировать', edit_home_page_banner_path(home_page_banner), class: 'btn btn-default'
+        %td= link_to 'Удалить', home_page_banner, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'
+
+
+

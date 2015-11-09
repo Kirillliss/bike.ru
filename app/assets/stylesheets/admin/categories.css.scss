@@ -1,0 +1,33 @@
+// Place all the styles related to the admin/categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#categories {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+
+  .handle {
+    font-size: 12px !important;
+    font-weight: normal;
+    color: #777777;
+    padding: 2px 5px 0px 2px ;
+    cursor: move;
+  }
+
+  ol {
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 10px;
+
+    .item {
+      h3 {
+        font-size: 12px;
+        a {
+          color: #666;
+        }
+              
+      }
+    }
+  }
+}

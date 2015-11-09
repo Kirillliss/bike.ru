@@ -1,0 +1,21 @@
+= form_tag select_price_of_shipping_path, remote: true, id: 'shipping_details' do
+  %table.table.table-stripped.table-bordered
+
+    / %thead
+    /   %tr
+    /     %th Ваир
+    /     %th Время доставки
+    /     %th Цена (руб.)
+
+    - Nokogiri::XML(response_xml).xpath('//rsp/tarif').each do |tarif|
+      %tbody
+        %tr
+          %td
+            %label
+              = radio_button_tag 'price_of_shipping', "#{tarif.xpath('price').text},#{tarif.xpath('company').text}", checked = false
+              &nbsp;
+              #{tarif.xpath('company').text},
+              - if tarif.xpath('day').text.present?
+                #{tarif.xpath('day').text}, 
+              #{tarif.xpath('price').text} руб
+  / %input.btn.btn-primary.btn-sm.btn-block{:name => "update-totals", :type => "submit", :value => "Выбрать"}

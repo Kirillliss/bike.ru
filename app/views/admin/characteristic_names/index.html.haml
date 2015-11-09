@@ -1,0 +1,28 @@
+%h1
+  Названия характиристик
+  = link_to 'Новая характеристика', new_characteristic_name_path, class: 'btn btn-success'
+
+%table.table.table-stripped.table-bordered.datatable
+
+  %thead
+    %tr
+      %th id
+      %th Характеристика
+      %th Значения
+      / %th
+      %th
+      %th
+
+  %tbody
+    - @characteristics.each do |characteristic|
+      %tr
+        %td= characteristic.id
+        %td= characteristic.title
+        %td
+          - characteristic.characteristic_values.each do |cv|
+            = "#{cv.value}, "
+        / %td= link_to 'Показать', characteristic, class: 'btn btn-default'
+        %td= link_to 'Редактировать', edit_characteristic_name_path(characteristic), class: 'btn btn-default'
+        %td= link_to 'Удалить', characteristic, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+
+

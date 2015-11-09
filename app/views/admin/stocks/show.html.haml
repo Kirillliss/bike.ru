@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @stock.title
+%p
+  %b Phone:
+  = @stock.phone
+%p
+  %b Address:
+  = @stock.address
+
+= link_to 'Edit', edit_stock_path(@stock)
+\|
+= link_to 'Back', stocks_path

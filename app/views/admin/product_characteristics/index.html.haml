@@ -1,0 +1,23 @@
+%h1 Listing product_characteristics
+
+%table
+  %tr
+    %th Product
+    %th Characteristic name
+    %th Characteristic value
+    %th
+    %th
+    %th
+
+  - @product_characteristics.each do |product_characteristic|
+    %tr
+      %td= product_characteristic.product
+      %td= product_characteristic.characteristic_name
+      %td= product_characteristic.characteristic_value
+      %td= link_to 'Show', product_characteristic
+      %td= link_to 'Edit', edit_product_characteristic_path(product_characteristic)
+      %td= link_to 'Destroy', product_characteristic, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Product characteristic', new_product_characteristic_path

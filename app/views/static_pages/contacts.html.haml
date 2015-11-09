@@ -1,0 +1,91 @@
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Контакты
+
+.container
+  %h2.with-sorting
+    Наши контакты:
+
+  / #map{ :style => "width: 100%; height: 600px", class: 'img-thumbnail' }
+  = Part.get_body('map_for_contact_script')
+
+  / = image_tag 'scheme_of_input.jpg', class: 'img-thumbnail', style: 'width: 100%;'
+  / = image_tag 'spine_sport_checkpoint.jpg', class: 'img-thumbnail', style: 'width: 100%;'
+
+  / Contacts
+  %section.container
+    .row
+      / Contact Info
+      .col-lg-5.col-lg-offset-1.col-md-5.col-sm-5
+        %h3 Контакты
+        .cont-info-widget
+          %ul
+            %li
+              %i.fa.fa-building>
+              = Part.get_body 'address'
+            / %li
+            /   %a{:href => "#"}
+            /     %i.fa.fa-envelope>
+            /     mail@skibike.com
+            %li
+              / %a{:href => "#"}
+              %i.fa.fa-support>
+              = Part.get_body 'email'
+            %li
+              %i.fa.fa-phone>
+              = Part.get_body 'phone'
+            %li
+              %i.fa.fa-mobile>
+              = Part.get_body 'phone_mobile'
+            %li
+              ИП Тихомирова О.Ю</br>
+              Фактический адрес:</br>
+              115201 г. Москва ул. Котляковская д 7/8 стр 14</br>
+              Юридический адрес:</br>
+              142191, г. Троицк, ул. Нагорная, дом 5, кв. 227</br>
+              ИНН   780217588910</br>
+      .col-lg-5.col-md-7.col-sm-7
+        %h3 Написать нам
+        / %form.contact-form{:method => "post", :action => create_message_from_form_path}
+        = simple_form_for(@message, url: create_message_from_form_path, remote: true) do |f|
+          .form-group
+            / %label.sr-only{:for => "cf-name"} Name
+            / %input#cf-name.form-control{:name => "message[name]", :placeholder => "Ваше имя", :required => "", :type => "text"}/
+            = f.input_field :name, :placeholder => "Ваше имя", required: true, id: 'cf-name'
+          .form-group
+            / %label.sr-only{:for => "cf-email"} Email
+            / %input#cf-email.form-control{:name => "message[email]", :placeholder => "Ваш email", :required => "", :type => "email"}/
+            = f.input_field :email, :placeholder => "Ваш email", required: true, id: 'cf-email'
+          .form-group
+            / %label.sr-only{:for => "cf-message"} Message
+            / %textarea#cf-message.form-control{:name => "message[message]", :placeholder => "Сообщение", :required => "", :rows => "5"}
+            = f.input_field :message, :placeholder => "Сообщение", :rows => "5", required: true, id: 'cf-message'
+          / %input.btn.btn-primary{:type => "submit", :value => "Отправить"}/
+          = f.button :submit, :value => "Отправить", :class => 'btn-primary'
+          .alert.alert-info.message
+
+
+
+  / Contacts Close
+  / Brands Carousel Widget
+  %br
+  %section.brand-carousel
+    .container
+      %h2 Бренды нашего магазина
+      .inner
+        %a.item{:href => "http://haibikes.ru/"}
+          %img{:alt => "haibikes", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/thumb_126__elements_wysiwyg_images_right_lightbox-300x257.png"}/
+        %a.item{:href => "http://www.staiger-fahrrad.de/de/STAIGER-Fahrradmodelle-2015-118.html"}
+          %img{:alt => "staiger-fahrrad", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/staiger_logo_grey.jpg"}/
+        %a.item{:href => "http://spine-sport.ru/"}
+          %img{:alt => "spine-sport.", :src => 'http://westlinesport.ru/wp-content/uploads/2014/04/spinesport.png'}/
+        %a.item{:href => "http://ski-go.ru/"}
+          %img{:alt => "ski-go", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/skigo.png"}/
+        %a.item{:href => "http://xlc-parts.ru/"}
+          %img{:alt => "xlc-parts", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/xlcparts.png"}/
+        %a.item{:href => "http://htpdesign.ru/"}
+          %img{:alt => "htpdesign", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/htp.png"}/
+        %a.item{:href => "http://spine-sport.ru/"}
+          %img{:alt => "Dropbox", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/alpha.png"}/
+  / Brands Carousel Close

@@ -1,0 +1,218 @@
+/ Breadcrumbs
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Корзина
+
+/ Breadcrumbs Close
+/ Shopping Cart
+%section.shopping-cart
+  .container
+    .row
+      / Items List
+      .col-md-9
+        %h2.title Моя Корзина
+        .row
+          .col-md-3
+            Товары в корзине:
+          .col-md-9
+            .subnav
+              = link_to 'готовые к заказу', cart_path
+        %table.items-list
+          %tbody
+            %tr
+              %th.col-md-5{colspan: 2} Товар
+              %th.col-md-2 Цена
+              %th{style: 'width: 100px !important'} Количество
+              / %th{style: 'width: 50px !important'}
+              %th.col-md-2
+                %center
+                  Действия
+            - @cart.line_items.each do |li|
+              - p = li.product
+              - so = li.special_offer
+              / Item
+              %tr{ :class => "item first item_#{li.id}" }
+                %td
+                  - if p
+                    = link_to p do
+                      = image_tag p.image_url, class: 'img-thumbnail', width: 120
+                %td.name
+                  - if p
+                    = link_to p.title, p
+                  - elsif so
+                    = link_to so.product_one.title, so.product_one
+                    %br
+                    +
+                    %br
+                    = link_to so.product_two.title, so.product_two
+                  %br
+                  / - li.line_item_characteristics.all.each do |characteristic|
+                  /   = "#{characteristic.characteristic_name.title}: #{characteristic.characteristic_value.value}"
+                  /   %br
+                  = li.characteristics_from_offer
+                %td.price.col-md-2
+                  = number_to_currency li.price, unit: 'руб.'
+                %td.qnt-count
+                  = form_for(li, remote: true) do |f|
+                    %a.incr-btn{:href => "#", data: {target: li.id}} -
+                    - limit = li.offer_limit.present? ?  {limit: li.offer_limit} : {}
+                    = f.text_field :quantity, class: 'quantity form-control', id: "line_item_quantity_#{li.id}", data: limit
+                    / %input.quantity.form-control{:type => "text", :value => "2"}/
+                    %a.incr-btn{:href => "#", data: {target: li.id}} +
+                / %td.qnt-count.col-md-2
+                /   / - s = rand(12)
+                /   / %a.incr-btn{:href => "#"} -
+                /   / = link_to '-', edit_line_item_path(li), remote: true
+                /   / %input.quantity.form-control{:type => "text", :value => "#{s}"}/
+                /   / %a.incr-btn{:href => "#"} +
+
+                /   = simple_form_for(li, remote: true) do |f|
+                /     = f.error_notification
+                /     / = f.button :submit, '-', class: 'incr-btn'
+                /     = f.submit '-', class: 'btn-primary', style: 'width: 25px'
+                /     = f.input_field :quantity, readonly: true, id: "quantity_#{li.id}", class: 'quantity form-control'
+                /     = f.submit '+', class: 'btn-primary', style: 'width: 25px'
+
+                / %td{ :class => "total", id: "total_#{li.id}" }
+                /   = number_to_currency li.total_price, unit: 'руб.'
+
+                %td.delete
+                  %center{style: 'padding-top: 12px;'}
+                    / %i.icon-delete
+                    / = link_to image_tag('delete.png'), li, method: :delete, remote: true, class: 'delete_item', :data => { :confirm => 'Удалить из корзины товар?' }
+                    = link_to li, method: :delete, remote: true, :data => { :confirm => 'Удалить из корзины товар?' } do
+                      %i.icon-delete
+                    &nbsp;
+                    &nbsp;
+                / %td
+                /   - if li.product
+                /     = link_to add_to_wishlist_path(id: li.product.id), method: :post, class: "btn btn-success btn-xs btn-block" do
+                /       Отложить
+
+
+
+      / Sidebar
+      .col-lg-3.col-md-3
+
+        / %h3 Итого
+        %form.cart-sidebar{:method => "post"}
+          .cart-totals
+            %table
+              %tbody
+                %tr
+                  %td Подытог
+                  %td{ :class => "total align-r" }
+                    = number_to_currency @cart.total_price
+
+        %h3 Есть скидочный купон?
+        = form_tag(coupons_check_path, remote: true) do
+          .coupon
+            .form-group
+              %label.sr-only{:for => "coupon-code"} Введите код купона
+              - @cart.coupon ? code = @cart.coupon.code : code = ""
+              %input#coupon-code.form-control{:value => code, :name => "code", :placeholder => "Введите код купона", :type => "text"}/
+            #coupon_message
+            %input.btn.btn-primary.btn-sm.btn-block{:name => "apply-coupon", :type => "submit", :value => "Применить купон"}/
+
+        #total_price_with_coupon{:style => "display: none;"}
+          %form.cart-sidebar
+            .cart-totals
+              %table
+                %tbody
+                  %tr
+                    %td Итого с купоном
+                    %td{ :class => "total align-r total_price_with_coupon" }
+                      = number_to_currency(@cart.total_price true)
+
+        %br
+        %h3 Доставка
+        / %a.panel-toggle{:href => "#calc-shipping"}
+        /   %h3 Расчет доставки
+        / #calc-shipping.hidden-panel.calc-shipping
+        #calc-shipping.calc-shipping
+          = form_tag calculate_shipping_path, remote: true, id: 'shipping_form' do
+            .form-group
+              .select-style
+                %select{:name => "region", :id => 'select_region'}
+                  / %option Московская область
+                = hidden_field_tag :region_title
+            .form-group
+              / %label.sr-only{:for => "state"} Регион
+              / %input#state.form-control{:name => "state", :placeholder => "Регион", :type => "text"}/
+              .select-style
+                %select{:name => "location", :id => 'select_location'}
+                  / %option Москва
+                = hidden_field_tag :city_title
+            / .form-group
+            /   %label.sr-only{:for => "postcode"} Индекс
+            /   %input#postcode.form-control{:name => "postcode", :placeholder => "Индекс", :type => "text"}/
+            / %input.btn.btn-primary.btn-sm.btn-block{:name => "update-totals", :type => "submit", :value => "Показать варианты доставки"}/
+            / %input.btn.btn-primary.btn-sm.btn-block{:name => "update-totals", :type => "submit", :value => "Обновить расчет"}/
+        #shipping_select_price
+
+        %h3 Итого
+        %form.cart-sidebar{:method => "post"}
+          .cart-totals
+            %table
+              %tbody
+                / %tr
+                /   %td Подытог
+                /   %td{ :class => "total align-r total_price" }
+                /     = number_to_currency @cart.total_price
+                / %tr.devider
+                /   %td Доставка
+                /   %td.align-r Бесплатно
+                %tr
+                  %td Сумма заказа
+                  %td{ :class => "total align-r total_price total_price_with_coupon" }
+                    = number_to_currency @cart.total_price
+                %tr
+                  %td Доставка
+                  / %td{ :class => "total align-r total_price price_of_shipping" }
+                  %td{ :class => "total align-r price_of_shipping" }
+                    = number_to_currency @cart.price_of_shipping
+            / %input.btn.btn-primary.btn-sm.btn-block{:name => "update-cart", :type => "submit", :value => "Обновить коризну"}/
+            / %input.btn.btn-success.btn-block{:name => "to-checkout", :type => "submit", :value => "Оформить заказ"}/
+
+        = link_to new_order_path, method: :get, class: 'btn btn-success btn-block disabled make_order' do
+          Оформить заказ
+
+/ Shopping Cart Close
+/ Catalog Grid
+%section.catalog-grid
+  .container
+    %h2.primary-color Новинки
+    .row
+      - Product.limit(4).each do |product|
+        / Tile
+        .col-lg-3.col-md-4.col-sm-6
+          .tile
+            .price-label= number_to_currency product.price, unit: 'руб.'
+            %a{:href => "#"}
+              %img{:alt => "1", :src => "#{product.image_url}"}/
+            .footer
+              %a{:href => "#"}= product.title
+              %span
+              .tools
+                .rate
+                  %span.active
+                  %span.active
+                  %span.active
+                  %span
+                  %span
+                / Add To Cart Button
+                %a.add-cart-btn{:href => "#"}
+                  %span Купить
+                  %i.icon-shopping-cart
+                / Share Button
+                .share-btn
+                  .hover-state
+                    %a.fa.fa-facebook-square{:href => "#"}
+                    %a.fa.fa-twitter-square{:href => "#"}
+                    %a.fa.fa-google-plus-square{:href => "#"}
+                  %i.fa.fa-share
+                / Add To Wishlist Button
+                %a.wishlist-btn{:href => "#"}
+                  .hover-state Сравнить
+                  %i.fa.fa-plus

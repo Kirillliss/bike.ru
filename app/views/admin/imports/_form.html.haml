@@ -1,0 +1,15 @@
+= simple_form_for([:admin, @import]) do |f|
+  = f.error_notification
+  .well
+    %p
+      Загрузите на компьютер и заполните
+      = link_to 'файл для импорта', image_url('file_for_upload.csv')
+  .form-inputs
+    = f.file_field :file_xls, class: 'btn btn-info'
+    %br
+    = link_to 'Редактировать поставщиков', stocks_path, class: 'btn btn-default'
+    = f.association :stock, input_html: {class: 'select2 select2-bootstrap-append'}
+    -# f.input :proccessed_at
+
+  .form-actions
+    = f.button :submit, "Импортировать",class: 'btn btn-primary'

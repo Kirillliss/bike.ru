@@ -1,0 +1,21 @@
+/ .container.main-container
+/   .row
+/     .col-lg-3.col-md-3.col-sm-12
+/       = render 'best_seller'
+/     .clearfix.visible-sm
+/     / Cart
+/     .col-lg-9.col-md-9.col-sm-12
+/       .col-lg-12.col-sm-12
+/         %span.title Новый заказ
+/       .col-lg-12.col-sm-12.hero-feature
+/         = render 'form'
+
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Оформление заказа
+
+%section.checkout
+  .container
+    .row
+      = render 'form'

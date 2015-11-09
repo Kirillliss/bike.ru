@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @product_characteristic.product
+%p
+  %b Characteristic name:
+  = @product_characteristic.characteristic_name
+%p
+  %b Characteristic value:
+  = @product_characteristic.characteristic_value
+
+= link_to 'Edit', edit_product_characteristic_path(@product_characteristic)
+\|
+= link_to 'Back', product_characteristics_path

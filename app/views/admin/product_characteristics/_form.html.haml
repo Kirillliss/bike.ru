@@ -1,0 +1,10 @@
+= simple_form_for(@product_characteristic) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :product
+    = f.association :characteristic_name
+    = f.association :characteristic_value
+
+  .form-actions
+    = f.button :submit

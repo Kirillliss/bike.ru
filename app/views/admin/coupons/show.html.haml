@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Скидка(%):
+  = @coupon.amount
+%p
+  %b Код:
+  = @coupon.code
+%p
+  %b Валиден до:
+  = @coupon.valid_till
+%p
+  %b Вечно:
+  = @coupon.permanent
+%p
+  %b Корзина:
+  = @coupon.cart
+%p
+  %b Использован:
+  = @coupon.used_at
+%p
+  %b Заказ:
+  = link_to @coupon.order.id, [:admin, @coupon.order] if @coupon.order
+
+= link_to 'Редактировать', edit_admin_coupon_path(@coupon), class: 'btn btn-default '
+\|
+= link_to 'Все купоны', admin_coupons_path

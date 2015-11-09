@@ -1,0 +1,29 @@
+%ul.breadcrumb
+  %li
+    = link_to 'Главная', root_path
+    %span.divider /
+  - if @page
+    - @page.ancestors.each do |page|
+      %li{class: "#{'active' if page == @page}"}
+        = link_to page.title, page
+        %span.divider /
+    %li.active
+      %strong= @page.title
+
+  - elsif @product
+    - @product.category.ancestors.each do |category|
+      %li{class: "#{'active' if category == @product.category}"}
+        = link_to category.title, category
+        %span.divider /
+    %li
+      = link_to @product.category.title, @product.category
+      %span.divider /
+    %li.active
+      %strong= @product.title
+  - elsif @category
+    - @category.ancestors.each do |category|
+      %li{class: "#{'active' if category == @category}"}
+        = link_to category.title, category
+        %span.divider /
+    %li.active
+      %strong= @category.title

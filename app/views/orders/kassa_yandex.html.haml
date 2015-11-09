@@ -1,0 +1,13 @@
+%form{:action => "https://money.yandex.ru/eshop.xml", :method => "post"}
+  / Обязательные поля
+  %input{:name => "shopId", :type => "hidden", :value => '28239'}/
+  %input{:name => "scid", :type => "hidden", :value => 'D061BF404A005AAAB70EED008F3A01A7B1A5EB0BBA2B039C6E4F6416AE3FAB4C'}/
+  %input{:name => "sum", :type => "hidden", :value => "0.03"}/
+  %input{:name => "customerNumber", :type => "hidden", :value => "abc000"}/
+  / Необязательные поля
+  / %input{:name => "shopArticleId", :type => "hidden", :value => "567890"}/
+  / %input{:name => "paymentType", :type => "hidden", :value => "AC"}/
+  / %input{:name => "orderNumber", :type => "hidden", :value => "abc1111111"}/
+  / %input{:name => "cps_phone", :type => "hidden", :value => "79110000000"}/
+  / %input{:name => "cps_email", :type => "hidden", :value => "user@domain.com"}/
+  %input{:type => "submit", :value => "Заплатить"}/

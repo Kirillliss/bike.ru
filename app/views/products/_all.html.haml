@@ -1,0 +1,153 @@
+%section.catalog-grid
+  .container
+    .row
+
+      / Filters
+      .filters-mobile.col-lg-3.col-md-3.col-sm-4
+        .shop-filters
+
+
+          / / Price Section
+          / %section.filter-section
+          /   %h3 Сортировать по цене
+          /   %form{:method => "get", :name => "price-filters"}
+          /     %span#clearPrice.clear Очистить
+          /     .price-btns
+          /       / %button.btn.btn-success.btn-sm{:value => "меньше 50р"} меньше 50р
+          /       %br/
+          /       %button.btn.btn-success.btn-sm.disabled{:value => "50р-100р"} 50р-100р
+          /       %br/
+          /       %button.btn.btn-success.btn-sm{:value => "100р-300р"} 100р-300р
+          /       %br/
+          /       %button.btn.btn-success.btn-sm{:value => "300р-1000р"} 300р-1000р
+          /     .price-slider
+          /       #price-range.noUi-target.noUi-ltr.noUi-horizontal.noUi-background
+          /         .noUi-base
+          /           .noUi-origin.noUi-connect{:style => "left: 6.8273092%;"}
+          /             .noUi-handle.noUi-handle-lower
+          /           .noUi-origin.noUi-background{:style => "left: 55.8232932%;"}
+          /             .noUi-handle.noUi-handle-upper
+          /       .values.group
+          /         / data-min-val represent minimal price and data-max-val maximum price respectively in pricing slider range; value="" - default values
+          /         %input#minVal.form-control{"data-min-val" => "10", :name => "minVal", :type => "text", :value => "180"}/
+          /         %span.labels $ -
+          /         %input#maxVal.form-control{"data-max-val" => "2500", :name => "maxVal", :type => "text", :value => "1400"}/
+          /         %span.labels $
+          /       %input.btn.btn-primary.btn-sm{:type => "submit", :value => "Отфильтровать"}/
+
+          %section.filter-section
+            %h3 Сортировать по цене
+            = simple_form_for(@search, url: { controller: 'categories', action: 'search'} , method: "get", name: "price-filters", id: @category.id ) do |f|
+
+              .values.group
+                = f.input_field :price_from, id: 'minVal', class: '.form-control'
+                %span.labels руб.
+                = f.input_field :price_to, id: 'maxVal', class: '.form-control'
+                %span.labels руб.
+
+                = f.hidden_field :category_id
+
+                = f.association :producer, input_html: { class: 'select2 select2-bootstrap-append' }
+
+              = f.button :submit, 'Поиск'
+
+
+          / / Colors Section
+          / %section.filter-section
+          /   %h3 Выбрать по цвету
+          /   %span.clear.clearChecks Очистить
+          /   %label
+          /     .icheckbox.checked{:style => "position: relative;"}
+          /       %input#color_0{:checked => "checked", :name => "colors", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "black"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Черные (12)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#color_1{:name => "colors", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "white"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Белые (1)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#color_2{:name => "colors", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "green"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Зеленые  (34)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#color_3{:name => "colors", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "blue"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Синие (23)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#color_4{:name => "colors", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "red"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Красные (12)
+          / / Colors Section
+          / %section.filter-section
+          /   %h3 По размеру
+          /   %span.clear.clearChecks Очистить
+          /   %label
+          /     .icheckbox.checked{:style => "position: relative;"}
+          /       %input#size_0{:checked => "checked", :name => "sizes", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "small"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Small (12)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#size_1{:name => "sizes", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "white"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Medium (34)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#size_2{:name => "sizes", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "green"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Large (11)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#size_3{:name => "sizes", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "blue"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Extra large (1)
+          /   %br/
+          /   %label
+          /     .icheckbox{:style => "position: relative;"}
+          /       %input#size_4{:name => "sizes", :style => "position: absolute; opacity: 0;", :type => "checkbox", :value => "red"}/
+          /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+          /     Superman (0)
+          / Categories Section
+          / %section.filter-section
+          /   %h3 Категории
+          /   %ul.categories
+          /     %li.has-subcategory
+          /       - @category.children.each do |child|
+          /         = link_to child.title, child
+
+      / Tiles
+      .col-lg-9.col-md-9.col-sm-8
+        .row
+          - @products.each do |product|  #Product.limit(4).each do |product|
+            / Tile
+            = render partial: 'products/product', locals: { product: product }
+
+        / / Pagination
+        / %ul.pagination
+        /   %li.prev-page
+        /     %a.icon-arrow-left{:href => "#"}
+        /   %li.active
+        /     %a{:href => "#"} 1
+        /   %li
+        /     %a{:href => "#"} 2
+        /   %li
+        /     %a{:href => "#"} 3
+        /   %li
+        /     %a{:href => "#"} 4
+        /   %li.next-page
+        /     %a.icon-arrow-right{:href => "#"}
+
+        = paginate @products
+
+/ Catalog Grid Close

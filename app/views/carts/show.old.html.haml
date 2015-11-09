@@ -1,0 +1,58 @@
+.container.main-container
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      = render 'best_seller'
+    .clearfix.visible-sm
+    / Cart
+    .col-lg-9.col-md-9.col-sm-12
+      .col-lg-12.col-sm-12
+        %span.title КОРЗИНА
+      .col-lg-12.col-sm-12.hero-feature
+        %table.table.table-bordered.tbl-cart
+          %thead
+            %tr
+              %td.hidden-xs Картинка
+              %td Наименование
+              %td Размер
+              %td Цвет
+              %td.td-qty Количество
+              %td Цена
+              %td Подытог
+              %td Удалить
+          %tbody
+            - @cart.line_items.each do |li|
+              %tr
+                %td.hidden-xs
+                  = link_to li.product do
+                    = image_tag li.product.image_url, height: 47, width: 47
+                %td
+                  = link_to li.product.title, li.product
+                %td
+                  %select{:name => ""}
+                    %option{:selected => "selected", :value => ""} S
+                    %option{:value => ""} M
+                %td -
+                %td
+                  / %input.input-qty.form-control.text-center{:name => "", :type => "text", :value => "#{li.quantity}"}/
+                %td.price=number_to_currency(li.total_price)
+                %td=number_to_currency(li.total_price)
+                %td.text-center
+                  %a.remove_cart{:href => "#", :rel => "2"}
+                    %i.fa.fa-trash-o
+              
+            %tr
+              %td{:align => "right", :colspan => "6"} Total
+              %td.total{:colspan => "2"}
+                %b= number_to_currency(@cart.total_price)
+        .row
+          .col-md-2
+            = link_to root_path, class: 'btn btn-primary' do
+              %i.fa.fa-arrow-circle-left
+              Продолжить покупки
+          .col-md-1
+            = button_to 'Очистить', @cart, method: :delete, data: { confirm: 'Точно?' }, class: 'btn btn-primary'
+          .col-md-3
+            = button_to new_order_path, method: :get, class: 'btn btn-primary' do
+              Чекаут
+              %i.fa.fa-arrow-circle-right
+    / End Cart

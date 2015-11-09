@@ -1,0 +1,11 @@
+= simple_form_for([:admin, @special_offer]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :product_one
+    = f.association :product_two
+    = f.input :special_price
+    = f.input :published
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'

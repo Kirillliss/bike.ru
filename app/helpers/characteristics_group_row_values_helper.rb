@@ -1,0 +1,2 @@
+module CharacteristicsGroupRowValuesHelper
+end

@@ -1,0 +1,33 @@
+.page-header
+  %h1 Заказы
+
+%table.table.table-striped.table-bordered.datatable
+  %thead
+    %tr
+      %th ID
+      %th Номер
+      %th Дата
+      %th Клиент
+      %th Адрес
+      %th Товаров
+      %th Тип доставки
+      %th Цена доставки
+      %th Cумма
+      %th Cумма со скидкой
+      %th Купон
+      %th
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.id
+        %th= order.number
+        %td=l order.created_at, format: "%d.%m.%Y"
+        %td=link_to order.user.full_name, [:admin, order.user]
+        %td= order.address
+        %td= order.total_quantity
+        %td= order.kind_of_shipping
+        %td= number_to_currency order.price_of_shipping
+        %td= number_to_currency order.total_price
+        %td= number_to_currency(order.total_price(true))
+        %th= order.coupon ? link_to(order.coupon.code, [:admin, order.coupon]) : "Без купона"
+        %td= link_to 'Подробности', [:admin, order], class: 'btn btn-default'

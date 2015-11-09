@@ -1,0 +1,17 @@
+.container.main-container
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      = render 'categories'
+    .clearfix.visible-sm
+    / Catalogue
+    .col-lg-9.col-md-9.col-sm-12
+      .col-lg-12.col-sm-12
+      - @deals.each do |deal|
+        .clearfix
+          .col-lg-12.col-sm-12
+            %span.title= deal.title
+            = link_to image_tag(deal.image_url, class: 'img-responsive'), deal
+            %br
+            %blockquote= raw deal.description
+            %hr
+            

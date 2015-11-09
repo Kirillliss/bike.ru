@@ -1,0 +1,97 @@
+/ .container.main-container
+/   .row
+/     .col-lg-3.col-md-3.col-sm-12
+/       = render 'base/best_seller'
+/     .clearfix.visible-sm
+/     / Cart
+/     .col-lg-9.col-md-9.col-sm-12
+/       .col-lg-12.col-sm-12
+/         %span.title Вход
+/       .col-lg-12.col-sm-12.hero-feature
+/         = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-stacked'}) do |f|
+/           .form-inputs
+/             = f.input :email, required: false, autofocus: true
+/             .clearfix
+/             = f.input :password, required: false
+/             .clearfix
+/             = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
+/           .actions
+/             = f.button :submit, "Войти", class: 'btn primary'
+/             .pull-right
+/               = render "devise/shared/links"
+
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Вход / Регистрация
+
+%section.log-reg.container
+  %h2 Вход / Регистрация
+  %p.large Войти через соцсети
+  .social-login
+    %a.facebook{:href => "#"}
+      %i.fa.fa-facebook-square
+    %a.google{:href => "#"}
+      %i.fa.fa-google-plus-square
+    %a.twitter{:href => "#"}
+      %i.fa.fa-twitter-square
+  .row
+    / Login
+    .col-lg-5.col-md-5.col-sm-5
+      / %form.login-form{:method => "post", :novalidate => "novalidate"}
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-stacked'}) do |f|
+
+        = f.input :email, required: false, autofocus: true, :placeholder => "Введите Email"
+
+        / .form-group.group
+        /   / %label{:for => "log-email2"} Email
+        /   / %input#log-email2.form-control{:name => "log-email2", :placeholder => "Enter your email", :required => "", :type => "email"}/
+        /   / %a.help-link{:href => "#"} Forgot email?
+
+        .form-group.group
+          / %label{:for => "log-password2"} Password
+          / %input#log-password2.form-control{:name => "log-password2", :placeholder => "Enter your password", :required => "", :type => "text"}/
+
+          = f.input :password, required: false, :placeholder => "Введите пароль"
+
+          = link_to 'Забыли пароль?', new_user_password_path(resource_name), class: 'help-link'
+
+        / .checkbox
+        /   %label
+        /     .icheckbox{:style => "position: relative;"}
+        /       %input{:name => "remember", :style => "position: absolute; opacity: 0;", :type => "checkbox"}/
+        /       %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+        /     Remember me
+        = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
+
+        / %input.btn.btn-success{:type => "submit", :value => "Login"}/
+        = f.button :submit, "Войти", class: 'btn btn-success'
+
+    / Registration
+    .col-lg-7.col-md-7.col-sm-7
+
+      / %form.registr-form{:method => "post", :novalidate => "novalidate"}
+      /   .form-group.group
+      /     %label{:for => "rf-email"} Email
+      /     %input#rf-email.form-control{:name => "rf-email", :placeholder => "Enter email", :required => "", :type => "email"}/
+      /   .form-group.group
+      /     %label{:for => "rf-password"} Password
+      /     %input#rf-password.form-control{:name => "rf-password", :placeholder => "Enter password", :required => "", :type => "password"}/
+      /   .form-group.group
+      /     %label{:for => "rf-password-repeat"} Repeat password
+      /     %input#rf-password-repeat.form-control{:name => "rf-password-repeat", :placeholder => "Repeat password", :required => "", :type => "password"}/
+      /   .checkbox
+      /     %label
+      /       .icheckbox{:style => "position: relative;"}
+      /         %input{:name => "remember", :style => "position: absolute; opacity: 0;", :type => "checkbox"}/
+      /         %ins.iCheck-helper{:style => "position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"}
+      /       I have read and agree with the terms
+      /   %input.btn.btn-success{:type => "submit", :value => "Register"}/
+
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.input :full_name, required: false, autofocus: true, placeholder: "Введите имя"
+        = f.input :phone, required: false, placeholder: "Введите телефон"
+        = f.input :email, required: false, placeholder: "Введите Email"
+        = f.input :password, required: false, placeholder: "Введите пароль"
+        = f.input :password_confirmation, required: false, placeholder: "Подтвердите пароль"
+        = f.button :submit, "Зарегистрироваться", class: 'btn btn-success'

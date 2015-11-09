@@ -1,0 +1,465 @@
+/ begin breadcrumb
+%ol.breadcrumb.pull-right
+  %li
+    %a{:href => "javascript:;"} Главная
+  %li.active Дашборд
+/ end breadcrumb
+/ begin page-header
+%h1.page-header
+  Панель управления 
+  %small бизнесом и продажами ...
+/ end page-header
+/ begin row
+.row
+  / begin col-3
+  .col-md-3.col-sm-6
+    .widget.widget-stats.bg-green
+      .stats-icon
+        %i.fa.fa-desktop
+      .stats-info
+        %h4 TOTAL VISITORS
+        %p 3,291,922
+      .stats-link
+        %a{:href => "javascript:;"}
+          View Detail
+          %i.fa.fa-arrow-circle-o-right
+  / end col-3
+  / begin col-3
+  .col-md-3.col-sm-6
+    .widget.widget-stats.bg-blue
+      .stats-icon
+        %i.fa.fa-chain-broken
+      .stats-info
+        %h4 BOUNCE RATE
+        %p 20.44%
+      .stats-link
+        %a{:href => "javascript:;"}
+          View Detail
+          %i.fa.fa-arrow-circle-o-right
+  / end col-3
+  / begin col-3
+  .col-md-3.col-sm-6
+    .widget.widget-stats.bg-purple
+      .stats-icon
+        %i.fa.fa-users
+      .stats-info
+        %h4 UNIQUE VISITORS
+        %p 1,291,922
+      .stats-link
+        %a{:href => "javascript:;"}
+          View Detail
+          %i.fa.fa-arrow-circle-o-right
+  / end col-3
+  / begin col-3
+  .col-md-3.col-sm-6
+    .widget.widget-stats.bg-red
+      .stats-icon
+        %i.fa.fa-clock-o
+      .stats-info
+        %h4 AVG TIME ON SITE
+        %p 00:12:23
+      .stats-link
+        %a{:href => "javascript:;"}
+          View Detail
+          %i.fa.fa-arrow-circle-o-right
+  / end col-3
+/ end row
+/ begin row
+.row
+  / begin col-8
+  .col-md-8
+    .panel.panel-inverse{"data-sortable-id" => "index-1"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Website Analytics (Last 7 Days)
+      .panel-body
+        #interactive-chart.height-sm
+    %ul.nav.nav-tabs.nav-tabs-inverse.nav-justified.nav-justified-mobile{"data-sortable-id" => "index-2"}
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#latest-post"}
+          %i.fa.fa-picture-o.m-r-5
+          %span.hidden-xs Latest Post
+      %li
+        %a{"data-toggle" => "tab", :href => "#purchase"}
+          %i.fa.fa-shopping-cart.m-r-5
+          %span.hidden-xs Purchase
+      %li
+        %a{"data-toggle" => "tab", :href => "#email"}
+          %i.fa.fa-envelope.m-r-5
+          %span.hidden-xs Email
+    .tab-content{"data-sortable-id" => "index-3"}
+      #latest-post.tab-pane.fade.active.in
+        .height-sm{"data-scrollbar" => "true"}
+          %ul.media-list.media-list-with-divider
+            %li.media.media-lg
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/gallery/gallery-1.jpg"}/
+              .media-body
+                %h4.media-heading Aenean viverra arcu nec pellentesque ultrices. In erat purus, adipiscing nec lacinia at, ornare ac eros.
+                Nullam at risus metus. Quisque nisl purus, pulvinar ut mauris vel, elementum suscipit eros. Praesent ornare ante massa, egestas pellentesque orci convallis ut. Curabitur consequat convallis est, id luctus mauris lacinia vel. Nullam tristique lobortis mauris, ultricies fermentum lacus bibendum id. Proin non ante tortor. Suspendisse pulvinar ornare tellus nec pulvinar. Nam pellentesque accumsan mi, non pellentesque sem convallis sed. Quisque rutrum erat id auctor gravida.
+            %li.media.media-lg
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/gallery/gallery-10.jpg"}/
+              .media-body
+                %h4.media-heading Vestibulum vitae diam nec odio dapibus placerat. Ut ut lorem justo.
+                Fusce bibendum augue nec fermentum tempus. Sed laoreet dictum tempus. Aenean ac sem quis nulla malesuada volutpat. Nunc vitae urna pulvinar velit commodo cursus. Nullam eu felis quis diam adipiscing hendrerit vel ac turpis. Nam mattis fringilla euismod. Donec eu ipsum sit amet mauris iaculis aliquet. Quisque sit amet feugiat odio. Cras convallis lorem at libero lobortis, placerat lobortis sapien lacinia. Duis sit amet elit bibendum sapien dignissim bibendum.
+            %li.media.media-lg
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/gallery/gallery-7.jpg"}/
+              .media-body
+                %h4.media-heading Maecenas eget turpis luctus, scelerisque arcu id, iaculis urna. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                Morbi placerat est nec pharetra placerat. Ut laoreet nunc accumsan orci aliquam accumsan. Maecenas volutpat dolor vitae sapien ultricies fringilla. Suspendisse vitae orci sed nibh ultrices tristique. Aenean in ante eget urna semper imperdiet. Pellentesque sagittis a nulla at scelerisque. Nam augue nulla, accumsan quis nisi a, facilisis eleifend nulla. Praesent aliquet odio non imperdiet fringilla. Morbi a porta nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+            %li.media.media-lg
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/gallery/gallery-8.jpg"}/
+              .media-body
+                %h4.media-heading Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor accumsan rutrum.
+                Fusce augue diam, vestibulum a mattis sit amet, vehicula eu ipsum. Vestibulum eu mi nec purus tempor consequat. Vestibulum porta non mi quis cursus. Fusce vulputate cursus magna, tincidunt sodales ipsum lobortis tincidunt. Mauris quis lorem ligula. Morbi placerat est nec pharetra placerat. Ut laoreet nunc accumsan orci aliquam accumsan. Maecenas volutpat dolor vitae sapien ultricies fringilla. Suspendisse vitae orci sed nibh ultrices tristique. Aenean in ante eget urna semper imperdiet. Pellentesque sagittis a nulla at scelerisque.
+      #purchase.tab-pane.fade
+        .height-sm{"data-scrollbar" => "true"}
+          %table.table
+            %thead
+              %tr
+                %th Date
+                %th.hidden-sm Product
+                %th Amount
+                %th User
+            %tbody
+              %tr
+                %td 13/02/2013
+                %td.hidden-sm
+                  %a{:href => "javascript:;"}
+                    %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/product/product-1.png"}/
+                %td
+                  %h6
+                    %a{:href => "javascript:;"} Nunc eleifend lorem eu velit eleifend, eget faucibus nibh placerat.
+                %td $349.00
+                %td
+                  %a{:href => "javascript:;"} Derick Wong
+              %tr
+                %td 13/02/2013
+                %td.hidden-sm
+                  %a{:href => "javascript:;"}
+                    %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/product/product-2.png"}/
+                %td
+                  %h6
+                    %a{:href => "javascript:;"} Nunc eleifend lorem eu velit eleifend, eget faucibus nibh placerat.
+                %td $399.00
+                %td
+                  %a{:href => "javascript:;"} Derick Wong
+              %tr
+                %td 13/02/2013
+                %td.hidden-sm
+                  %a{:href => "javascript:;"}
+                    %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/product/product-3.png"}/
+                %td
+                  %h6
+                    %a{:href => "javascript:;"} Nunc eleifend lorem eu velit eleifend, eget faucibus nibh placerat.
+                %td $499.00
+                %td
+                  %a{:href => "javascript:;"} Derick Wong
+              %tr
+                %td 13/02/2013
+                %td.hidden-sm
+                  %a{:href => "javascript:;"}
+                    %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/product/product-4.png"}/
+                %td
+                  %h6
+                    %a{:href => "javascript:;"} Nunc eleifend lorem eu velit eleifend, eget faucibus nibh placerat.
+                %td $230.00
+                %td
+                  %a{:href => "javascript:;"} Derick Wong
+              %tr
+                %td 13/02/2013
+                %td.hidden-tablet.hidden-phone
+                  %a{:href => "javascript:;"}
+                    %img{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/product/product-5.png"}/
+                %td
+                  %h6
+                    %a{:href => "javascript:;"} Nunc eleifend lorem eu velit eleifend, eget faucibus nibh placerat.
+                %td $500.00
+                %td
+                  %a{:href => "javascript:;"} Derick Wong
+      #email.tab-pane.fade
+        .height-sm{"data-scrollbar" => "true"}
+          %ul.media-list.media-list-with-divider
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-1.jpg"}/
+              .media-body
+                %a{:href => "javascript:;"}
+                  %h4.media-heading Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                %p.m-b-5
+                  Aenean mollis arcu sed turpis accumsan dignissim. Etiam vel tortor at risus tristique convallis. Donec adipiscing euismod arcu id euismod. Suspendisse potenti. Aliquam lacinia sapien ac urna placerat, eu interdum mauris viverra.
+                %i.text-muted Received on 04/16/2013, 12.39pm
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-2.jpg"}/
+              .media-body
+                %a{:href => "javascript:;"}
+                  %h4.media-heading Praesent et sem porta leo tempus tincidunt eleifend et arcu.
+                %p.m-b-5
+                  Proin adipiscing dui nulla. Duis pharetra vel sem ac adipiscing. Vestibulum ut porta leo. Pellentesque orci neque, tempor ornare purus nec, fringilla venenatis elit. Duis at est non nisl dapibus lacinia.
+                %i.text-muted Received on 04/16/2013, 12.39pm
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-3.jpg"}/
+              .media-body
+                %a{:href => "javascript:;"}
+                  %h4.media-heading Ut mi eros, varius nec mi vel, consectetur convallis diam.
+                %p.m-b-5
+                  Ut mi eros, varius nec mi vel, consectetur convallis diam. Nullam eget hendrerit eros. Duis lacinia condimentum justo at ultrices. Phasellus sapien arcu, fringilla eu pulvinar id, mattis quis mauris.
+                %i.text-muted Received on 04/16/2013, 12.39pm
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-4.jpg"}/
+              .media-body
+                %a{:href => "javascript:;"}
+                  %h4.media-heading Aliquam nec dolor vel nisl dictum ullamcorper.
+                %p.m-b-5
+                  Aliquam nec dolor vel nisl dictum ullamcorper. Duis vel magna enim. Aenean volutpat a dui vitae pulvinar. Nullam ligula mauris, dictum eu ullamcorper quis, lacinia nec mauris.
+                %i.text-muted Received on 04/16/2013, 12.39pm
+    .panel.panel-inverse{"data-sortable-id" => "index-4"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Quick Post
+      .panel-toolbar
+        .btn-group.m-r-5
+          %a.btn.btn-white{:href => "javascript:;"}
+            %i.fa.fa-bold
+          %a.btn.btn-white.active{:href => "javascript:;"}
+            %i.fa.fa-italic
+          %a.btn.btn-white{:href => "javascript:;"}
+            %i.fa.fa-underline
+        .btn-group
+          %a.btn.btn-white{:href => "javascript:;"}
+            %i.fa.fa-align-left
+          %a.btn.btn-white.active{:href => "javascript:;"}
+            %i.fa.fa-align-center
+          %a.btn.btn-white{:href => "javascript:;"}
+            %i.fa.fa-align-right
+          %a.btn.btn-white{:href => "javascript:;"}
+            %i.fa.fa-align-justify
+      %textarea.form-control.no-rounded-corner.bg-silver{:rows => "14"} Enter some comment.
+      .panel-footer.text-right
+        %a.btn.btn-white.btn-sm{:href => "javascript:;"} Cancel
+        %a.btn.btn-primary.btn-sm.m-l-5{:href => "javascript:;"} Action
+    .panel.panel-inverse{"data-sortable-id" => "index-5"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Message
+      .panel-body
+        .height-sm{"data-scrollbar" => "true"}
+          %ul.media-list.media-list-with-divider.media-messaging
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-5.jpg"}/
+              .media-body
+                %h5.media-heading John Doe
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id nunc non eros fermentum vestibulum ut id felis. Nunc molestie libero eget urna aliquet, vitae laoreet felis ultricies. Fusce sit amet massa malesuada, tincidunt augue vitae, gravida felis.
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-6.jpg"}/
+              .media-body
+                %h5.media-heading Terry Ng
+                %p Sed in ante vel ipsum tristique euismod posuere eget nulla. Quisque ante sem, scelerisque iaculis interdum quis, eleifend id mi. Fusce congue leo nec mauris malesuada, id scelerisque sapien ultricies.
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-8.jpg"}/
+              .media-body
+                %h5.media-heading Fiona Log
+                %p Pellentesque dictum in tortor ac blandit. Nulla rutrum eu leo vulputate ornare. Nulla a semper mi, ac lacinia sapien. Sed volutpat ornare eros, vel semper sem sagittis in. Quisque risus ipsum, iaculis quis cursus eu, tristique sed nulla.
+            %li.media.media-sm
+              %a.pull-left{:href => "javascript:;"}
+                %img.media-object.rounded-corner{:alt => "", :src => "http://seantheme.com/color-admin-v1.5/admin/html/assets/img/user-7.jpg"}/
+              .media-body
+                %h5.media-heading John Doe
+                %p Morbi molestie lorem quis accumsan elementum. Morbi condimentum nisl iaculis, laoreet risus sed, porta neque. Proin mi leo, dapibus at ligula a, aliquam consectetur metus.
+      .panel-footer
+        %form
+          .input-group
+            %input.form-control.bg-silver{:placeholder => "Enter message", :type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-primary{:type => "button"}
+                %i.fa.fa-pencil
+  / end col-8
+  / begin col-4
+  .col-md-4
+    .panel.panel-inverse{"data-sortable-id" => "index-6"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Analytics Details
+      .panel-body.p-t-0
+        %table.table.table-valign-middle.m-b-0
+          %thead
+            %tr
+              %th Source
+              %th Total
+              %th Trend
+          %tbody
+            %tr
+              %td
+                %label.label.label-danger Unique Visitor
+              %td
+                13,203
+                %span.text-success
+                  %i.fa.fa-arrow-up
+              %td
+                #sparkline-unique-visitor
+            %tr
+              %td
+                %label.label.label-warning Bounce Rate
+              %td 28.2%
+              %td
+                #sparkline-bounce-rate
+            %tr
+              %td
+                %label.label.label-success Total Page Views
+              %td 1,230,030
+              %td
+                #sparkline-total-page-views
+            %tr
+              %td
+                %label.label.label-primary Avg Time On Site
+              %td 00:03:45
+              %td
+                #sparkline-avg-time-on-site
+            %tr
+              %td
+                %label.label.label-default % New Visits
+              %td 40.5%
+              %td
+                #sparkline-new-visits
+            %tr
+              %td
+                %label.label.label-inverse Return Visitors
+              %td 73.4%
+              %td
+                #sparkline-return-visitors
+    .panel.panel-inverse{"data-sortable-id" => "index-7"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Visitors User Agent
+      .panel-body
+        #donut-chart.height-sm
+    .panel.panel-inverse{"data-sortable-id" => "index-8"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title World Visitors
+      .panel-body.p-0
+        %ul.todolist
+          %li.active
+            %a.todolist-container.active{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Donec vehicula pretium nisl, id lacinia nisl tincidunt id.
+          %li
+            %a.todolist-container{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Duis a ullamcorper massa.
+          %li
+            %a.todolist-container{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Phasellus bibendum, odio nec vestibulum ullamcorper.
+          %li
+            %a.todolist-container{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Duis pharetra mi sit amet dictum congue.
+          %li
+            %a.todolist-container{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Duis pharetra mi sit amet dictum congue.
+          %li
+            %a.todolist-container{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Phasellus bibendum, odio nec vestibulum ullamcorper.
+          %li
+            %a.todolist-container.active{"data-click" => "todolist", :href => "javascript:;"}
+              .todolist-input
+                %i.fa.fa-square-o
+              .todolist-title Donec vehicula pretium nisl, id lacinia nisl tincidunt id.
+    .panel.panel-inverse{"data-sortable-id" => "index-9"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title World Visitors
+      .panel-body.p-0
+        #world-map.height-sm.width-full
+    .panel.panel-inverse{"data-sortable-id" => "index-10"}
+      .panel-heading
+        .panel-heading-btn
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-default{"data-click" => "panel-expand", :href => "javascript:;"}
+            %i.fa.fa-expand
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-success{"data-click" => "panel-reload", :href => "javascript:;"}
+            %i.fa.fa-repeat
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-warning{"data-click" => "panel-collapse", :href => "javascript:;"}
+            %i.fa.fa-minus
+          %a.btn.btn-xs.btn-icon.btn-circle.btn-danger{"data-click" => "panel-remove", :href => "javascript:;"}
+            %i.fa.fa-times
+        %h4.panel-title Calendar
+      .panel-body
+        #datepicker-inline.datepicker-full-width
+          %div
+  / end col-4
+/ end row
+/ end #content

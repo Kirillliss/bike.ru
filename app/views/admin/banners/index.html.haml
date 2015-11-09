@@ -1,0 +1,41 @@
+.page-header
+  %h1
+    Банеры
+
+    = link_to 'Добавить', new_admin_banner_path, class: 'btn btn-success'
+
+
+%table.table.table-stripped.table-bordered.datatable
+  %thead
+    %tr
+      %th Картинка
+      %th Детали
+      %th Действия
+  %tbody
+    - @banners.each do |banner|
+      %tr
+        %td.col-md-4
+          = image_tag banner.image_url(:left_banner)
+        %td
+          %p
+            %strong Заголовок:
+            = banner.title
+          %blockquote
+            =raw banner.text
+          %p
+            %strong URL:
+            = banner.url
+          %p
+            %strong На главной:
+            =t banner.topable
+          %p
+            %strong Слева:
+            =t banner.leftable
+          %p
+            %strong Опубликован:
+            =t banner.published
+        %td.col-md-3
+          .btn-group.btn-group-sm
+            = link_to 'Редактировать', edit_admin_banner_path(banner), class: 'btn btn-default '
+            = link_to 'Удалить', [:admin, banner], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+

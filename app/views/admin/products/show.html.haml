@@ -1,0 +1,52 @@
+.row-fluid
+  .col-md-4= render 'categories_tree'
+  .col-md-8
+    %h3
+      = @product.title
+      %br
+      %small= @product.one_ass_id
+
+    .btn-group.btn-group-xs.pull-left
+      = link_to 'Редактировать товар', edit_admin_product_path(@product), class: 'btn btn-default'
+    .btn-group.btn-group-xs.pull-right
+      = link_to 'Удалить', [:admin, @product], :method => :delete, :data => { :confirm => 'Точно удалить?' }, class: 'btn btn-sm btn-danger'
+      = link_to 'Добавить новый товар', new_admin_category_product_path(@category, @product), class: 'btn btn-success'
+    .clearfix
+    %hr
+    %ol.breadcrumb
+      - @product.category.ancestors.each do |cat|
+        %li= link_to cat.title, [:admin, cat]
+      %li= link_to @product.category.title, [:admin, @product.category]
+    .row
+      .col-md-7
+        - if @product.images.any?
+          %ul.bxslider{style: 'width: 330px'}
+            - @product.images.each do |image|
+              %li= image_tag image.image_url(:product)
+      .col-md-5
+        %table.table.table-stripped
+          / - if @product.old_price.present?
+          /   %tr
+          /     %th Старая Цена:
+          /     %td
+          /       %strike= number_to_currency @product.old_price, unit: 'руб.'
+          - @product.product_offers.each do |offer|
+            - offer.offer_prices.each do |price|
+              %tr
+                %th Цена:
+                %td= price.price
+          %tr
+            %th Цена производителя:
+            %td= @product.producer_price
+          %tr
+            %th Код товара:
+            %td= @product.article
+          %tr
+            %th Скидка:
+            %td= link_to @product.discount.title, @product.discount if @product.discount
+          %tr
+            %th Последний импорт:
+            %td= link_to 'Перейти', admin_import_path(@product.import) if @product.import
+    %p Описание:
+    %blockquote
+      =raw @product.description

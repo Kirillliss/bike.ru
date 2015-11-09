@@ -1,0 +1,34 @@
+.page-header
+  %h1
+    Клиент
+    = @user.full_name
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Телефон:
+  = @user.phone
+
+
+.page-header
+  %h3 Заказы
+
+%table.table.table-stripped.table-bordered
+  %tr
+    %th Дата
+    %th Номер
+    %th Адрес
+    %th Товаров
+    %th Cумма
+    %th
+
+  - @user.orders.each do |order|
+    %tr
+      %td=l order.created_at, format: "%d.%m.%Y"
+      %td= order.id
+      %td= order.address
+      %td= order.total_quantity
+      %td=number_to_currency order.total_price
+      %td= link_to 'Подробности', [:admin, order]
+
+%br

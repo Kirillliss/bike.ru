@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @admin_tizer.title
+%p
+  %b Url:
+  = @admin_tizer.url
+
+= link_to 'Edit', edit_admin_tizer_path(@admin_tizer)
+\|
+= link_to 'Back', admin_tizers_path

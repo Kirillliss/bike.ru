@@ -1,0 +1,48 @@
+%nav.menu
+  %ul.main
+    - current_project.pages.public_roots.order(:position).each do |root_page|
+      %li.has-submenu
+        = link_to root_page do
+          = root_page.title
+          %i.fa.fa-chevron-down
+        - if root_page.children.aviable.any?
+          %ul.submenu
+            - root_page.children.aviable.order(:position).each do |sub_page|
+              %li=link_to sub_page.title, sub_page
+
+    - Page.everywhereable.public_roots.order(:position).each do |root_page|
+      %li.has-submenu
+        = link_to root_page do
+          = root_page.title
+          %i.fa.fa-chevron-down
+        - if root_page.children.aviable.any?
+          %ul.submenu
+            - root_page.children.aviable.order(:position).each do |sub_page|
+              %li=link_to sub_page.title, sub_page
+
+    %li.has-submenu= link_to 'Контакты', static_pages_contacts_path
+    %li.has-submenu= link_to 'О нас', static_pages_about_us_path
+    %li.has-submenu= link_to 'Новости', posts_index_path
+
+  .row
+    .col-md-2
+      %ul.catalog.left
+        %li.has-submenu
+          = link_to '#', id: 'link_catalog' do
+            Все категории
+            %i.fa.fa-chevron-down
+          %ul.submenu.dropdown-menu.dropdown-menu-large#submenu
+            - Category.roots_with_chidlren.each_slice(3) do |roots|
+              .row
+                - roots.each do |root|
+                  - next if root.childess?
+                  %li.col-md-3
+                    %ul
+                      %li.dropdown-header= root.title
+                      - root.children.published.order(:position).each do |child|
+                        - next if child.childess?
+                        %li= link_to child.title, child
+    .col-md-5
+      = simple_form_for(Search.new, url: { controller: 'searches', action: 'show'} , html: { class: 'sidebar-search' }, method: "get") do |f|
+        %input.form-control{:name => "search[product_title]", :placeholder => "Поиск по товарам", :type => "text", style: 'background-color: white; width: 100%; margin-top: 10px;'}/
+        %button{:type => "submit"}

@@ -1,0 +1,10 @@
+- if page.children.published.any?
+  %li.nav-dropdown
+    = link_to page, :class => "dropdown-toggle" do
+      = page.title
+      %span.caret
+    %ul.dropdown-menu
+      - page.children.published.order(:position).each do |child_page|
+        %li= link_to child_page.title, child_page
+- else
+  %li= link_to page.title, page

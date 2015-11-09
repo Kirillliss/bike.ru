@@ -1,0 +1,140 @@
+/ Categories Slider
+%section.category-slider
+  #cat-slider.master-slider
+
+    / - 5.times do |i|
+    /   / Category (Slide) 1
+    / .ms-slide
+    /   / Background
+    /   / %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_3.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   = image_tag 'bushido/blank.gif', 'data-src' => image_url('bushido/bg_3.png'), alt: 'lorem ipsum dolor sit'
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "left(50,true)"}
+    /     %h2.dark-color
+    /       Ботинки Spine 22
+    /       .redalert со скидкой 25%
+    /     %p.dark-color Закажи один ботинок и второй получи в подарок совершенно бесплатно! Кроме того, три ботинка по цене четырех это тоже выгодно!
+    /     %a.btn.btn-primary{:href => "#"} Каталог
+    /     %a.btn.btn-success{:href => "#"}
+    /       Купить за
+    /       / %strike 7 234
+    /       2155 &#8381;!
+    /   = image_tag 'front/bootso.png', class: 'ms-layer img-block', data: {delay: '350', duration: '800', ease: 'easeOutQuad', effect: 'back(500)'}, style: 'right: 50px;'
+    /   .ms-thumb
+    /     = image_tag 'front/boots_th.png'
+    /     %h3 Лыжные ботинки!
+
+
+
+    - HomePageBanner.published.each do |banner|
+      .ms-slide
+        / Background
+        / %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_3.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+        = image_tag 'bushido/blank.gif', 'data-src' => image_url('bushido/bg_3.png'), alt: 'lorem ipsum dolor sit'
+        / Text
+        .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "left(50,true)"}
+          %h2.dark-color
+            = banner.title
+            .redalert= banner.title_red
+          %p.dark-color= banner.description
+          %a.btn.btn-primary{:href => banner.main_button_url}= banner.main_button_title
+          - if banner.secondary_button_on
+            %a.btn.btn-success{:href => banner.secondary_button_url}= banner.secondary_button_title
+        = image_tag banner.image_big_url(:home_page_banner_image_big), class: 'ms-layer img-block', data: {delay: '350', duration: '800', ease: 'easeOutQuad', effect: 'back(500)'}, style: 'right: 50px;'
+        .ms-thumb
+          = image_tag banner.image_small.url
+          %h3= banner.title_small
+
+
+
+    / / Category (Slide) 1
+    / .ms-slide
+    /   / Background
+    /   %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_3.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "left(50,true)"}
+    /     %h2.gray-color
+    /       Ботинки Spine 22
+    /       .redalert со скидкой 25%
+    /     %p.gray-color Закажи один ботинок и второй получи в подарок совершенно бесплатно! Кроме того, три ботинка по цене четырех это тоже выгодно!
+    /     %a.btn.btn-primary{:href => "#"} Каталог
+    /     %a.btn.btn-success{:href => "#"}
+    /       Купить за
+    /       / %strike 7 234
+    /       2155 &#8381;!
+    /   = image_tag 'front/bootso.png', class: 'ms-layer img-block', data: {delay: '350', duration: '800', ease: 'easeOutQuad', effect: 'back(500)'}, style: 'right: 50px;'
+    /   .ms-thumb
+    /     = image_tag 'front/boots_th.png'
+    /     %h3 Лыжные ботинки!
+    / / Category (Slide) 2
+    / .ms-slide
+    /   / Background
+    /   %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_2.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "right(50,true)"}
+    /     %h2.gray-color
+    /       IBMs huge collection
+    /       %br>/
+    /       in our shop!
+    /     %p.gray-color Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+    /     %a.btn.btn-primary{:href => "#"} Go to catalog
+    /     %a.btn.btn-success{:href => "#"} Browse all PC
+    /   / Image
+    /   %img.ms-layer.img-block{:alt => "2", "data-delay" => "350", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "back(500)", :src => "http://the8guild.com/themes/html/bushido/img/categories/slides/slide_2.png", :style => "right: 50px;"}/
+    /   .ms-thumb
+    /     %img{:alt => "2", :src => "http://the8guild.com/themes/html/bushido/img/categories/thumbs/th_2.jpg"}/
+    /     %h3 Category
+    / / Category (Slide) 3
+    / .ms-slide
+    /   / Background
+    /   %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_1.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "right(50,true)"}
+    /     %h2.light-color
+    /       Nikon best models
+    /       %br>/
+    /       in our shop!
+    /     %p.light-color Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+    /     %a.btn.btn-primary{:href => "#"} Go to catalog
+    /     %a.btn.btn-success{:href => "#"} Browse all PC
+    /   / Image
+    /   %img.ms-layer.img-block{:alt => "3", "data-delay" => "350", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "back(500)", :src => "http://the8guild.com/themes/html/bushido/img/categories/slides/slide_3.png", :style => "right: 0;"}/
+    /   .ms-thumb
+    /     %img{:alt => "3", :src => "http://the8guild.com/themes/html/bushido/img/categories/thumbs/th_3.jpg"}/
+    /     %h3 Category
+    / / Category (Slide) 4
+    / .ms-slide
+    /   / Background
+    /   %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_1.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "right(50,true)"}
+    /     %h2.light-color
+    /       3D Printers
+    /       %br>/
+    /       in our shop!
+    /     %p.light-color Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+    /     %a.btn.btn-primary{:href => "#"} Go to catalog
+    /     %a.btn.btn-success{:href => "#"} Browse all PC
+    /   / Image
+    /   %img.ms-layer.img-block{:alt => "4", "data-delay" => "350", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "back(500)", :src => "http://the8guild.com/themes/html/bushido/img/categories/slides/slide_4.png", :style => "right: 60px;"}/
+    /   .ms-thumb
+    /     %img{:alt => "4", :src => "http://the8guild.com/themes/html/bushido/img/categories/thumbs/th_4.jpg"}/
+    /     %h3 Category
+    / / Category (Slide) 5
+    / .ms-slide
+    /   / Background
+    /   %img{:alt => "lorem ipsum dolor sit", "data-src" => "http://the8guild.com/themes/html/bushido/img/categories/slides/bg_3.png", :src => "http://the8guild.com/themes/html/bushido/masterslider/blank.gif"}/
+    /   / Text
+    /   .ms-layer.text-block{"data-delay" => "250", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "right(50,true)"}
+    /     %h2.gray-color
+    /       Look for all Nest
+    /       %br>/
+    /       in our shop!
+    /     %p.gray-color Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+    /     %a.btn.btn-primary{:href => "#"} Go to catalog
+    /     %a.btn.btn-success{:href => "#"} Browse all PC
+    /   / Image
+    /   %img.ms-layer.img-block{:alt => "5", "data-delay" => "350", "data-duration" => "800", "data-ease" => "easeOutQuad", "data-effect" => "back(500)", :src => "http://the8guild.com/themes/html/bushido/img/categories/slides/slide_5.png", :style => "right: 60px;"}/
+    /   .ms-thumb
+    /     %img{:alt => "5", :src => "http://the8guild.com/themes/html/bushido/img/categories/thumbs/th_5.jpg"}/
+    /     %h3 Category

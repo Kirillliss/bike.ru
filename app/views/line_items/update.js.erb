@@ -1,0 +1,3 @@
+$("#quantity_<%= @line_item.id %>").val("<%= @line_item.quantity %>");
+$("#total_<%= @line_item.id %>").html("<%= number_to_currency @line_item.total_price %>");
+$(".total_price").html("<%= number_to_currency @cart.total_price %>");

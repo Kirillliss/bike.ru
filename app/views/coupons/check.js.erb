@@ -1,0 +1,7 @@
+<% if @error %>
+  $('#coupon_message').html('<%=@message%>');
+<% else %>
+  $('#coupon_message').html('Ваша скидка составляет: <%=@coupon.amount%>%');
+  $('#total_price_with_coupon').css('display','block');
+  $(".total_price_with_coupon").html("<%= number_to_currency @cart.total_price(true) %>");
+<% end %>

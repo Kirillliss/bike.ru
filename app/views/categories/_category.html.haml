@@ -1,0 +1,18 @@
+- unless category.childess?
+  - if category.children.published.any?
+    - open = category.open?(params[:id])
+    %li.has-subcategory{class: "#{'opened' if open}"}
+      = link_to category do
+        - if category.id == params[:id].to_i
+          %strong=category.title
+        - else
+          = category.title
+      %ul.subcategory{class: "#{'open' if open}"}
+        = render category.children.published.order(:position)
+  - else
+    %li
+      = link_to category do
+        - if category.id == params[:id].to_i
+          %strong=category.title
+        - else
+          = category.title

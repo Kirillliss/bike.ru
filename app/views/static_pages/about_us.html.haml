@@ -1,0 +1,202 @@
+/ Page Content
+.about
+  / .page-content
+  / Hero Static
+  %section.hero-static
+    .overlay
+    / .bg-image{"data-stellar-background-ratio" => "0.5", :style => "background-image: url(http://2.bp.blogspot.com/-h-M8WdfUTSM/UKohkUbgqWI/AAAAAAAAHLs/GsPMK94GKlk/s1600/Ski_Wallpaper_3.jpg);"}
+    .bg-image{"data-stellar-background-ratio" => "0.5", :style => "background-image: url(http://images-iys.s3.amazonaws.com/ifyouski/resorts/ski-italy.jpg);"}
+    / .bg-image{"data-stellar-background-ratio" => "0.5", :style => "background-image: url(#{Part.get_body 'image_about_us'});"}
+    .content
+      .inner
+        %h1
+          = Part.get_body 'title_about_us'
+          %br/
+          %span Магазин зимних товаров.
+  / Hero Static Close
+  / About Info
+  %section.space-top.space-bottom.container
+    %h2 О нас
+    / .row
+    /   .col-lg-5.col-md-6.col-sm-6
+    /     %h3 Why we are cool
+    /     %p.p-style3 Lorem
+    /   .col-lg-6.col-lg-offset-1.col-md-6.col-sm-6
+    /     %p.p-style3 Lorem
+    %p.p-style3= Part.get_body 'text_about_us'
+    / Московское подразделение еще очень молодое и пока что не имеет богатой истории. Но, не смотря на это, в нашей команде работают специалисты серьезного уровня. Все сотрудники Московского Офиса работают в спортивной индустрии, в том числе и по профилю равнинных лыж, более 15 лет. Решение о создании Московского офиса было принято в конце 2010 года. В полную силу Московское подразделение начало работать в Январе 2011 года.  Нашей основной задачей является работа  со средним, мелким оптом и розничным покупателем. В Москве находится не только офис, но и оперативный склад, на котором круглый год в полном объеме находится наша продукция.  В нашем офисе мы осуществляем розничные продажи. Посетив  офис, вы сможете подобрать, и примерить любую модель из нашей коллекции. Так же наше отделение сможет предложить Вам полный ассортимент лыж, лыжных палок, лыжных креплений, лыжных смазок, мазей парафинов, треккинговую обувь, обувь для повседневного использования и разнообразные аксессуары. Мы работаем со спортивными школами, туристическими базами, а так же со спортсменами любителями. В нашу задачу входит популяризация продукции Российского производителя, мы стремимся показать, что в России умеют делать хорошие лыжные ботинки, не только любительского уровня, но и модели для требовательных экспертов при этом оставаясь в ценовом сегменте доступным для всех кто ведет активный образ жизни.
+  / About Info Close
+  / Team
+  %section.team.container
+    %h3 Наша команда
+
+    - people = Person.aviable
+    = "Отредактируйте сотрудников компании в admin" if people.count == 0
+    - people.each_slice(4) do |group|
+      .row
+        - group.each do |person|
+          / Member
+          .col-lg-3.col-md-3.col-sm-6
+            .member
+              .mask
+                %img{:alt => "person.full_name", :src => person.avatar, style: "width: 100%;"}/
+              %h4= person.full_name
+              %h5= person.job_title
+              %h5= person.phone
+              .social
+                %a{:href => person.fb_url }
+                  %i.fa.fa-facebook-square
+                %a{:href => person.vk_url }
+                  %i.fa.fa-pinterest-square
+                %a{:href => "mailto:#{person.email}" }
+                  %i.fa.fa-envelope
+
+    / .row
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Андрей Федоров", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/1.png", style: "width: 100%;"}/
+    /       %h4 Андрей Федоров
+    /       %h5 Cтарший менеджер оптового отдела
+    /       %h5 Тел: +7 (965) 377-05-09
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:fedorov@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Антон Казанджян", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/5.png", style: "width: 100%;"}/
+    /       %h4 Антон Казанджян
+    /       %h5 Менеджер оптового отдела
+    /       %h5 Тел: +7 (963) 765-68-23
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:ak@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Дмитрий Кукумань", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/2.png", style: "width: 100%;"}/
+    /       %h4 Дмитрий Кукумань
+    /       %h5 Менеджер интернет-магазина
+    /       %h5 Тел: +7 (926) 401-68-63
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:sale@spine-sport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Марат Аляутдинов", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/5.jpg", style: "width: 100%;"}/
+    /       %h4 Марат Аляутдинов
+    /       %h5 Менеджер оптового отдела
+    /       %h5 Тел: +7 (916) 617-87-84
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:ma@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+    / .row
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Дмитрий Геллер", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/6.jpg", style: "width: 100%;"}/
+    /       %h4 Дмитрий Геллер
+    /       %h5 Менеджер интернет-магазина
+    /       %h5 Тел: +7 (915) 214-91-09
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:sale@spine-sport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Артем Яровиков", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/4.png", style: "width: 100%;"}/
+    /       %h4 Артем Яровиков
+    /       %h5 Коммерческий директор
+    /       %h5 Тел: +7 (916) 303-75-75
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:yarovikov@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Алексей Алфёров", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/7.jpg", style: "width: 100%;"}/
+    /       %h4 Алексей Алфёров
+    /       %h5 Директор по маркетингу
+    /       %h5 Тел: +7 (926) 210-60-80
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:alferov@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+    /   / Member
+    /   .col-lg-3.col-md-3.col-sm-6
+    /     .member
+    /       .mask
+    /         %img{:alt => "Роман Ушаков", :src => "http://westlinesport.ru/wp-content/uploads/2014/04/8.jpg", style: "width: 100%;"}/
+    /       %h4 Роман Ушаков
+    /       %h5 Генеральный директор
+    /       %h5 Тел: +7 (906) 790-70-50
+    /       .social
+    /         %a{:href => "#"}
+    /           %i.fa.fa-twitter
+    /         %a{:href => "#"}
+    /           %i.fa.fa-facebook-square
+    /         %a{:href => "#"}
+    /           %i.fa.fa-pinterest-square
+    /         %a{:href => "mailto:ushakov@westlinesport.ru"}
+    /           %i.fa.fa-envelope
+
+/   Team Close
+/ Page Content Close

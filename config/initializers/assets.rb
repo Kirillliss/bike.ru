@@ -1,0 +1,2 @@
+Rails.application.config.assets.precompile += %w( bxslider.css application/overrides.css admin.css admin.js bushido/* )
+Rails.application.config.assets.precompile += %w( masterslider.js scripts.js bxslider.js bxslider.css bushido.js bushido.css)

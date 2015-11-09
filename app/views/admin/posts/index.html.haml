@@ -1,0 +1,26 @@
+.page-header
+  %h2
+    Ноости
+    = link_to 'Добавить', new_post_path, class: 'btn btn-success btn-sm'
+
+%table.table.table-stripped.table-bordered
+
+  %thead
+    %tr
+      %th Новости
+      %th
+
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td
+          .page-header
+            %h4
+              = post.title
+              %br
+                %small= l post.created_at, format: :short
+            = post.body.html_safe
+        %td
+          .btn-group.btn-group-sm
+            = link_to 'Изменить', edit_post_path(post), class: 'btn btn-default'
+            = link_to 'Удалить', post, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

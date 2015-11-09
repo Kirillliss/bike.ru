@@ -1,0 +1,23 @@
+.page-header
+  %h1
+    Проекты
+
+    = link_to 'Добавить', new_admin_project_path, class: 'btn btn-success'
+
+
+%table.table.table-stripped.table-bordered
+  %tr
+    %th Название
+    %th Hostname
+    %th Действие
+
+  - @projects.each do |project|
+    %tr
+      %td= project.title
+      %td= project.hostname
+      %td
+        .btn-group.btn-group-sm
+          = link_to 'Изменить', edit_admin_project_path(project), class: 'btn btn-default'
+          = link_to 'Удалить', [:admin, project], :method => :delete, :data => { :confirm => 'Точно?' }, class: 'btn btn-danger'
+
+%br

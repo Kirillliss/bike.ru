@@ -1,0 +1,16 @@
+.page-header
+  %h2
+    = @part.new_record? ? 'Новая' : 'Редактируем'
+    часть для сайта
+
+= simple_form_for(@part) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :code
+    = f.input :body
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отменить', parts_path, class: 'btn btn-default'

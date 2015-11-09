@@ -1,0 +1,59 @@
+= simple_form_for(@order, html: {:novalidate => "novalidate", id: 'checkout-form'}) do |f|
+  / Left Column
+  .col-lg-6.col-md-6.col-sm-6
+    %h2 Оформление заказа
+
+    = f.input :name, :input_html => { value: @order.user.full_name }
+    = f.input :email, :input_html => { value: current_user.email }
+    .row
+      .col-md-6
+        = f.input :region_title, :input_html => { value: @cart.region_title, disabled: true }
+      .col-md-6
+        = f.input :city_title, :input_html => { value: @cart.city_title, disabled: true }
+    
+    = f.input :address
+
+    - pay_types = @order.pay_types_for_delivery(@cart.kind_of_shipping)
+    = f.input :pay_type, as: :select, collection: pay_types, include_blank: pay_types.count > 1
+
+  .col-lg-5.col-lg-offset-1.col-md-5.col-sm-5
+    %h3 Ваш заказ
+    %table
+      %tbody
+        %tr
+          %th Товар
+        - @cart.line_items.each do |li|
+          - if li.product
+            - title = li.product.title
+            - quantity = li.quantity
+            - price = li.total_price
+          - elsif li.special_offer
+            - title = "Спецпредл #{li.special_offer_id}"
+            - quantity = li.quantity
+            - price = li.special_offer.special_price
+          %tr
+            %td.name.border
+              = title
+              %span x#{quantity}
+            %td.price.border= number_to_currency(price).gsub(' ', '&nbsp;').html_safe
+        %tr
+          %td.th.border Подытог
+          %td.price.border= number_to_currency(@cart.total_price).gsub(' ', '&nbsp;').html_safe
+        / %tr
+        /   %td.th Всего по заказу
+        /   %td.align-r.border.price= number_to_currency @cart.total_price
+        - if @cart.coupon
+          %tr
+            %td.th Со скидкой купона
+            %td.price= number_to_currency @cart.total_price(true)
+        %tr
+          %td.th Доставка
+        %tr
+          %td.name.border
+            #{@cart.kind_of_shipping}
+          %td.align-r.border.price= number_to_currency @cart.price_of_shipping
+        %tr
+          %td.th.border ИТОГ
+          %td.align-r.border.price= number_to_currency(@cart.total_price(true) + @cart.price_of_shipping)
+
+    = f.submit 'Разместить заказ', class: 'btn btn-success btn-block'

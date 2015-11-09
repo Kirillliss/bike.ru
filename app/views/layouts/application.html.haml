@@ -1,0 +1,136 @@
+!!!
+%html{:lang => "#{I18n.locale}"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+
+    %meta{content: "#{yield(:keywords)}", name: "keywords"}/
+    %meta{content: "#{yield(:description)}", name: "description"}/
+
+    %meta{:content => "", :name => "Deppkind"}/
+
+    %title= yield(:title).empty? ? current_project.title : [yield(:title),  current_project.title].join(' | ')
+
+    / Bootstrap Core CSSrel='stylesheet' type='text/css'>
+    = stylesheet_link_tag  "application", 'http://demo.18maret.com/demo/mimity/css/style.css', "bxslider", 'http://fonts.googleapis.com/css?family=Fira+Sans:300,700,300italic|Roboto+Condensed:300italic,300&subset=latin,cyrillic', 'application/overrides'
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    / Custom CSS
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+  %body
+    %header
+      .container
+        .row
+          / Logo
+          .col-lg-4.col-md-3.hidden-sm.hidden-xs
+            .well.logo.fonter
+              = link_to root_path do
+                Ski
+                %span Bike
+              %div Спортивные товары для любителей и профи.
+          / End Logo
+          / Search Form
+          .col-lg-5.col-md-5.col-sm-7.col-xs-12
+            .well
+              %form{:action => ""}
+                .input-group
+                  %input.form-control.input-search{:placeholder => "Найдите что-нибудь у нас", :type => "text"}/
+                  %span.input-group-btn
+                    %button.btn.btn-default.no-border-left{:type => "submit"}
+                      %i.fa.fa-search
+          / End Search Form
+          / Shopping Cart List
+          .col-lg-3.col-md-4.col-sm-5
+            .well
+              .btn-group.btn-group-cart
+                %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                  %span.pull-left
+                    %i.fa.fa-shopping-cart.icon-cart
+                  %span.pull-left
+                    Корзина:
+                    = @cart.line_items.count if @cart
+                    шт
+                  %span.pull-right
+                    %i.fa.fa-caret-down
+                %ul.dropdown-menu.cart-content{:role => "menu"}
+                  - if @cart
+                    = render(@cart.line_items)
+                    %li.divider
+                    %li
+                      = link_to @cart do
+                        Итого: #{number_to_currency(@cart.total_price)}
+          / End Shopping Cart List
+    / Navigation
+    %nav.navbar.navbar-inverse.fonter{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Навигация
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          / text logo on mobile view
+          %a.navbar-brand.visible-xs{:href => "/"} Spine Sport Шоп
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Каталог', root_path, class: "#{'active' if current_page?(root_path)}"
+            - if Deal.aviable.any?
+              %li= link_to 'Акции', deals_path, class: "#{'active' if current_page?(deals_path)}"
+            = render partial: 'base/page_in_nav', collection: current_project.pages.public_roots.order(:position), as: :page
+          %ul.nav.navbar-nav.pull-right
+            = render partial: 'base/page_in_nav', collection: Page.everywhereable.public_roots.order(:position), as: :page
+    / End Navigation
+    .container.main-container.fonter
+      = yield
+    %footer.fonter
+      .container
+        .col-lg-3.col-md-3.col-sm-6
+          .column
+            %h4 Информация
+            %ul
+              - current_project.pages.public_roots.order(:position).each do |page|
+                %li=link_to page.title, page
+              - Page.everywhereable.public_roots.order(:position).each do |page|
+                %li=link_to page.title, page
+
+        .col-lg-3.col-md-3.col-sm-6
+          .column
+            %h4 Категории
+            %ul
+              - Category.public_roots.each do |category|
+                %li=link_to category.title, category
+
+        .col-lg-3.col-md-3.col-sm-6
+          .column
+            %h4 Компания
+            %ul
+              %li
+                %a{:href => "contact.html"} Контакты
+              %li
+                %a{:href => "#"} Skype: denindruh
+              %li
+                %a{:href => "#"} Тел: +7 (495) 978-61-54
+              %li
+                %a{:href => "#"} Email: sale@spine-sport.ru
+        .col-lg-3.col-md-3.col-sm-6
+          .column
+            %h4 Следите за нами
+            %ul.social
+              %li
+                %a{:href => "#"} Google Plus
+              %li
+                %a{:href => "#"} Facebook
+              %li
+                %a{:href => "#"} Twitter
+              %li
+                %a{:href => "#"} RSS Лента
+      .navbar-inverse.text-center.copyright
+        Копирайт © 2014 Spine-Sport
+    %a.back-top.text-center{:href => "#top", :onclick => "$('body,html').animate({scrollTop:0},500); return false"}
+      %i.fa.fa-angle-double-up

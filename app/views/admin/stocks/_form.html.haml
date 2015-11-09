@@ -1,0 +1,16 @@
+.page-header
+  %h2
+    = @stock.new_record? ? 'Создаем нового' : 'Редактируем'
+    поставщика
+
+= simple_form_for(@stock) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :phone
+    = f.input :address
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отменить', stocks_path, class: 'btn btn-default'

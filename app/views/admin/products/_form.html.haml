@@ -1,0 +1,39 @@
+= simple_form_for([:admin, @category, @product], html: {class: 'form-vertical' }) do |f|
+  = f.input :title
+  .row-fluid
+    .col-md-6
+      %p Видимость
+      = f.input :published
+      = f.input :frontpageable
+    .col-md-6
+      %p Блоки на главной
+      = f.input :benefit
+      = f.input :hit
+      = f.input :markdown
+  = f.input :category_id, collection: Category.roots.order(:position), as: :grouped_select, group_method: :ordered_children, input_html: { class: 'select2'}, group_label_method: :title
+
+  = f.association :discount, input_html: { class: 'select2'}
+
+  .row
+    .col-md-4= f.input :price
+    .col-md-4= f.input :old_price
+    .col-md-4= f.input :article
+
+  %h3 Изображения товара
+  %hr
+  #images.form-group
+    = f.simple_fields_for :images do |image|
+      = render 'image_fields', :f => image
+      .clearfix
+    .links
+      = link_to_add_association 'Добавить изображение', f, :images, class: 'btn btn-default btn-small pull-right'
+    .clearfix
+
+  = f.input :description, as: :text, input_html: {class: 'ckedtr'}
+
+  = f.input :seo_title
+  = f.input :seo_keywords
+  = f.input :seo_description
+
+  = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+  / = link_to 'Отменить', [:admin, @category], class: 'btn btn-danger btn-small'

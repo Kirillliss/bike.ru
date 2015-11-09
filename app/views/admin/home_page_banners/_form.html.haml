@@ -1,0 +1,30 @@
+= simple_form_for(@home_page_banner) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :title_red
+    = f.input :title_small
+    = f.input :description
+    = f.input :main_button_title
+    = f.input :main_button_url
+    = f.input :secondary_button_on
+    = f.input :secondary_button_title
+    = f.input :secondary_button_url
+
+    = f.label :image_big
+    = image_tag @home_page_banner.image_big.url, size: '100x100'
+    %br Размер изображения: 400x398
+    = f.input :image_big, label: false
+
+    = f.label :image_small
+    = image_tag @home_page_banner.image_small.url, size: '100x100'
+    %br Размер изображения: 163x146
+    = f.input :image_small, label: false
+
+    = f.input :published
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+
+    = link_to 'Назад', home_page_banners_path, class: 'btn btn-default'

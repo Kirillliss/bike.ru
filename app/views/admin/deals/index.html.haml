@@ -1,0 +1,35 @@
+.page-header
+  %h1
+    Спецпредложения
+
+    = link_to 'Добавить', new_admin_deal_path, class: 'btn btn-success'
+
+
+%table.table.table-stripped.table-bordered.datatable
+  %thead
+    %tr
+      %th Картинка
+      %th Детали
+      %th Действия
+  %tbody
+    - @deals.each do |deal|
+      %tr
+        %td.col-md-4
+          = image_tag deal.image_url(:top_banner), width: 250
+        %td
+          %p
+            %strong Заголовок:
+            = deal.title
+          %blockquote
+            =raw deal.description
+          %p
+            %strong Товары:
+            = deal.products.pluck(:title).join(', ')
+          %p
+            %strong Опубликовано:
+            =t deal.published
+        %td.col-md-3
+          .btn-group.btn-group-sm
+            = link_to 'Редактировать', edit_admin_deal_path(deal), class: 'btn btn-default '
+            = link_to 'Удалить', [:admin, deal], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+

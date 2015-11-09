@@ -1,0 +1,26 @@
+/ Categories
+.col-lg-12.col-md-12.col-sm-6
+  .no-padding
+    %span.title КАТЕГОРИИ
+  .list-group.list-categ
+    - Category.public_roots.each do |category|
+      = link_to category.title, category, class: "list-group-item #{'current' if @category == category}"
+      - if @category && ((category == @category) || (category.descendants.include?(@category)))
+        - category.children.published.each do |child|
+          = link_to child.title, child, class: "list-group-item child #{'current' if @category == child}"
+          - if @category && ((child == @category) || (child.descendants.include?(@category)))
+            - child.children.published.each do |grandson|
+              = link_to grandson.title, grandson, class: "list-group-item child grandson #{'current' if @category == grandson}"
+
+    / %a.list-group-item{:href => "catalogue.html"} Cras justo odio
+    / %a.list-group-item.child{:href => "catalogue.html"} Cras justo odio
+    / %a.list-group-item{:href => "catalogue.html"} Dapibus ac facilisis in
+    / %a.list-group-item{:href => "catalogue.html"} Morbi leo risus
+    / %a.list-group-item{:href => "catalogue.html"} Porta ac consectetur ac
+    / %a.list-group-item{:href => "catalogue.html"} Vestibulum at eros
+    / %a.list-group-item{:href => "catalogue.html"} Cras justo odio
+    / %a.list-group-item{:href => "catalogue.html"} Dapibus ac facilisis in
+    / %a.list-group-item{:href => "catalogue.html"} Vestibulum at eros
+    / %a.list-group-item{:href => "catalogue.html"} Cras justo odio
+    / %a.list-group-item{:href => "catalogue.html"} Dapibus ac facilisis in
+/ End Categories

@@ -1,0 +1,44 @@
+.row
+  .col-md-4
+    = render 'imports_list'
+  .col-md-8
+    %br
+    %br
+    %table.table.table-stripped.table-bordered.datatable
+      %thead
+        %tr
+          %th Артикль
+          %th Наименование
+          %th Размер
+          %th Цена
+          %th Остаток
+          %th Штрих-код
+      %tbody
+        - @import.import_csv_lines.each do |import_line|
+          %tr
+            %td= import_line.article
+            %td= import_line.title
+            %td= import_line.size
+            %td= import_line.price
+            %td= import_line.stock
+            %td= import_line.barcode
+
+    = form_tag proccess_admin_imports_path, method: :patch do
+      = hidden_field_tag :id, @import.id
+      = button_tag "Создать (обновить) товары в магазине", class: "btn btn-success btn-lg btn-block"
+
+    - if @import.proccessed_at
+      %h3 Товары были загружены в магазин:
+      %table.table.table-stripped.table-bordered.datatable
+        %thead
+          %tr
+            %th Артикль
+            %th Наименование
+            %th Штрих-код
+        %tbody
+          - @import.products.each do |product|
+            %tr
+              %td= product.article
+              %td= link_to product.title, edit_admin_product_path(product)
+              %td= product.barcode
+

@@ -1,0 +1,10 @@
+.owl-carousel#slid
+  - Banner.all.each do |banner|
+    .item
+      = image_tag banner.image_url
+  / - 1.upto(3) do |i|
+  /   .item
+  /     =image_tag "slides/slide#{i}.jpg"
+  /     / .carousel-caption
+  /     /   %h3 Лучшие моменты матча!
+  /     /   %p Поехали с нами!

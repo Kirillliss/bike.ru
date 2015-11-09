@@ -1,0 +1,29 @@
+.container.main-container
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      = render 'best_seller'
+    .clearfix.visible-sm
+    / Product Detail
+    .col-lg-9.col-md-9.col-sm-12
+      .col-lg-12.col-sm-12
+        %span.title Сравнение товаров
+      .col-lg-12.col-sm-12.hero-feature
+        %table.table.table-bordered.tbl-cart.table-responsive
+          %thead
+            %tr
+              %td.hidden-xs Характеристика / Товар
+              - comparing_products.each do |product|
+                %td= link_to product.title, product
+          %tbody
+            %tr
+              %td Каринка
+              - comparing_products.each do |product|
+                %td=link_to image_tag(product.image_url, width: 150), product
+            %tr
+              %td Цена
+              - comparing_products.each do |product|
+                %td=number_to_currency product.price
+            %tr
+              %td Удалить
+              - comparing_products.each do |product|
+                %td= link_to 'Убарать', remove_from_compare_product_path(product)

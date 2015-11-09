@@ -1,0 +1,14 @@
+.page-header
+  %h3 Разделы сайта
+.categories
+  %ul.breadcrumb
+    %li=link_to 'Каталог товаров', root_path
+  = display_pages(current_project.pages.public_roots.order(:position), @page)
+  = display_pages(Page.everywhereable.public_roots.order(:position), @page)
+
+  %ul.breadcrumb
+    %li=link_to 'Корзина', @cart
+  %ul.breadcrumb
+    %li=link_to 'Профиль', edit_user_registration_path
+  %ul.breadcrumb
+    %li=link_to 'История Заказов', orders_path

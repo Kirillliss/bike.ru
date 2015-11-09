@@ -1,0 +1,20 @@
+.row-fluid
+  .col-md-4= render 'categories_tree'
+  .col-md-8
+    %h3 Товары на главной
+    %hr
+    - if @products.empty?
+      %blockquote Товаров на главной странцие не отображается. Во всех проектах.
+    - else
+      - @products.each_slice(2) do |products|
+        .row
+          - products.each do |product|
+            .col-md-6
+              .thumbnail
+                = link_to [:admin, product.category, product] do
+                  = image_tag product.image_url(:category)
+                  .caption
+                    %center
+                      %h4= product.title
+                    = product.project_names
+

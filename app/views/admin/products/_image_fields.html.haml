@@ -1,0 +1,15 @@
+.nested-fields
+  .row-fluid
+    .col-md-3
+      - if f.object.persisted?
+        = image_tag f.object.image_url(:category), width: 120, class: 'img-thumbnail'
+      - else
+        = image_tag image_sample_data, width: 120, class: 'img-thumbnail'
+    .col-md-6
+      = f.input :image
+      =# f.input :done, :as => :boolean
+    .col-md-3
+      %br
+      = link_to_remove_association "убрать изображение", f, class: 'btn btn-danger btn-sm'
+  .clearfix
+  %hr

@@ -1,0 +1,22 @@
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li
+    Результаты поиска
+
+.container
+  %h2.with-sorting
+    Вы искали '#{params[:search][:product_title]}':
+
+
+%section.catalog-grid
+  .container
+    .row
+      .col-lg-9.col-md-9.col-sm-8
+        / .row
+        - @products.each_slice(3) do |products|
+          .row
+            - products.each do |product|
+              = render partial: 'products/product', locals: { product: product }
+
+        = paginate @products

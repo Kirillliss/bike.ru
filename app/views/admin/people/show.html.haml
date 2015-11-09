@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Avatar:
+  = @person.avatar
+%p
+  %b First name:
+  = @person.first_name
+%p
+  %b Last name:
+  = @person.last_name
+%p
+  %b Phone:
+  = @person.phone
+%p
+  %b Job title:
+  = @person.job_title
+%p
+  %b Fb url:
+  = @person.fb_url
+%p
+  %b Vk url:
+  = @person.vk_url
+%p
+  %b Email:
+  = @person.email
+%p
+  %b Position:
+  = @person.position
+%p
+  %b Published:
+  = @person.published
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path

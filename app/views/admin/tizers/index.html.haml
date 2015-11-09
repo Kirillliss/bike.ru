@@ -1,0 +1,21 @@
+.page-header
+  %h1
+    Тизеры
+
+    = link_to 'Добавить', new_admin_tizer_path, class: 'btn btn-success'
+
+
+%table.table.table-stripped.table-bordered
+  %tr
+    %th Текст
+    %th Url
+    %th
+    %th
+
+  - @tizers.each do |tizer|
+    %tr
+      %td= tizer.title
+      %td= tizer.url
+      %td= link_to 'Редактировать', edit_admin_tizer_path(tizer)
+      %td= link_to 'Удалить', [:admin, tizer], :method => :delete, :data => { :confirm => 'Are you sure?' }
+

@@ -1,0 +1,34 @@
+- length = 70
+- if @best_seller
+  - product = @best_seller
+  / Best Seller
+  .col-lg-12.col-md-12.col-sm-6
+    .no-padding
+      %span.title ХИТ ПРОДАЖ
+    .hero-feature
+      .thumbnail.text-center
+        = link_to product, class: 'link-p' do
+          = image_tag product.image_url
+        .caption.prod-caption
+          %h4= link_to product.title, product
+          .dsc= truncate_html(raw(product.description), length: length, omission: ' ...')
+          %p
+          .btn-group
+            %a.btn.btn-default{:href => "#"}= number_to_currency product.price, unit: 'руб.'
+            = link_to line_items_path(product_id: product), class: "btn btn-primary" do
+              %i.fa.fa-shopping-cart
+              Купить
+    / .hero-feature.hidden-sm
+    /   .thumbnail.text-center
+    /     = link_to product, class: 'link-p' do
+    /       = image_tag product.image_url
+    /     .caption.prod-caption
+    /       %h4= link_to product.title, product
+    /       .dsc= truncate_html(raw(product.description), length: length, omission: ' ...')
+    /       %p
+    /       .btn-group
+    /         %a.btn.btn-default{:href => "#"}= number_to_currency product.price, unit: 'руб.'
+    /         = link_to line_items_path(product_id: product), class: "btn btn-primary" do
+    /           %i.fa.fa-shopping-cart
+    /           Купить
+  / End Best Seller

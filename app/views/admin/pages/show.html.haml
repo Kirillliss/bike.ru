@@ -1,0 +1,50 @@
+.row-fluid
+  .col-md-4= render 'pages_tree'
+  .col-md-8
+    %h3
+      = @page.title
+      %br
+      %small
+        - if @page.published?
+          %span.label.label-success Страница видна на сайте
+        - else
+          %span.label.label-default Страница не видна на сайте
+
+        %em.pull-right{style: 'font-size: 12px'}
+          - if @page.everywhereable?
+            Страница общая для всех проектов
+          - elsif @page.project_names.present?
+            Относится к проектам:
+            = @page.project_names
+          - else
+            Проект не выбран &mdash; страница нигде не будет видна
+    %hr
+    .btn-group.btn-group-xs.pull-right
+      = link_to 'Редактировать страницу', edit_admin_page_path(@page), class: 'btn btn-default'
+      = link_to 'Удалить', [:admin, @page], :method => :delete, :data => { :confirm => 'Точно удалить?' }, class: 'btn btn-sm btn-danger'
+      = link_to 'Добавить новую страницу', new_admin_page_path, class: 'btn btn-success'
+    .clearfix
+    %br
+    %ol.breadcrumb
+      - @page.ancestors.each do |cat|
+        %li= link_to cat.title, [:admin, cat]
+      %li.active= @page.title
+
+    .page-header
+      %h4 Содержание страницы
+    = raw @page.body
+
+    .page-header
+      %h4 SEO параметры
+
+    %table.table.table-bordered.table-stripped
+      %tr
+        %th.col-md-3 SEO Заголовок
+        %td= @page.seo_title
+      %tr
+        %th SEO Ключевые слова
+        %td= @page.seo_keywords
+      %tr
+        %th SEO Описание
+        %td= @page.seo_description
+

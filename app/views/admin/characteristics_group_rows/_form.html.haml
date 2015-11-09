@@ -1,0 +1,9 @@
+= simple_form_for(@characteristics_group_row) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :characteristics_group, label_method: :title, input_html: { class: 'select2'}
+    = f.association :characteristic_name, label_method: :title, input_html: { class: 'select2'}
+
+  .form-actions
+    = f.button :submit, "Готово", class: 'btn btn-primary'

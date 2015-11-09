@@ -1,0 +1,5 @@
+$('#shipping_select_price').html('<%= j render(partial: "table_select_type_of_delivery", locals: { response_xml: @response_xml }) %>');
+
+$('#shipping_details input').change(function() {
+  $('#shipping_details').submit();
+});

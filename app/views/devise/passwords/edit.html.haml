@@ -1,0 +1,24 @@
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Новый пароль
+
+%section.log-reg.container
+  %h2 Новый пароль
+
+  .col-lg-5.col-md-5.col-sm-5
+
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.error_notification
+      = f.input :reset_password_token, as: :hidden
+      = f.full_error :reset_password_token
+      = f.input :password, required: false, autofocus: true
+      = f.input :password_confirmation, required: false
+      = f.button :submit, "Изменить пароль", class: 'btn btn-success'
+
+      -# render "devise/shared/links"
+
+    %br
+    = link_to new_user_session_path, class: 'login-btn' do
+      %i.icon-profile
+      %span Войти

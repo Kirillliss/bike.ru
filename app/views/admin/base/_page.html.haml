@@ -1,0 +1,12 @@
+%li{id: "page_#{page.id}"}
+  .item{class: "#{cycle('even','odd')}"}
+    %span.disclose
+      %span
+    %h3
+      = link_to [:admin, page] do
+        = page.title
+        - unless page.published?
+          %em (Не&nbsp;опубликована)
+        .pull-right{style: 'font-size: 10px'}= page.project_names
+  - if page.children.any?
+    %ol= render partial: 'page', collection: page.children.order(:position)

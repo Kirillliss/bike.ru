@@ -1,0 +1,8 @@
+.index_as_sortable
+  %h3
+    Категории
+    .btn-group.btn-group-xs.pull-right
+      = link_to 'Добавить', new_admin_category_path, class: 'btn btn-primary'
+
+  %ol#categories.ui-sortable{ data: { 'start-collapsed' => 'true', 'max-levels' => 4, sortable: { type: 'tree', url: "#{sort_admin_categories_path}" }}}
+    = render partial: 'category', collection: Category.roots.order(:position)

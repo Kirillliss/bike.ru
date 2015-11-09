@@ -1,0 +1,11 @@
+%li{id: "category_#{category.id}"}
+  .item{class: "#{cycle('even','odd')}"}
+    %span.disclose
+      %span
+    %h3
+      = link_to [:admin, category] do
+        = category.title
+        - unless category.published?
+          %em (Не&nbsp;опубликована)
+  - if category.children.any?
+    %ol= render partial: 'category', collection: category.children.order(:position)

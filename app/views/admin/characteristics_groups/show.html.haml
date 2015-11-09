@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @characteristics_group.title
+
+= link_to 'Edit', edit_characteristics_group_path(@characteristics_group)
+\|
+= link_to 'Back', characteristics_groups_path

@@ -1,0 +1,134 @@
+/ %table
+/   %tr
+/     %th Характеристика
+/     - @products.each do |product|
+/       %th= product.title
+/   %tr
+/     %td Цена
+/     - @products.each do |product|
+/       %td= number_to_currency product.price, unit: 'руб.'
+/   %tr
+/     %td Описание
+/     - @products.each do |product|
+/       %td= product.description
+/   %tr
+/     %td Производитель
+/     - @products.each do |product|
+/       %td= product.producer ? product.producer.title : "NoName"
+
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  %li Сравнение товаров
+
+/ Wishlist
+%section.wishlist
+  .container
+    .row
+      / Items List
+      .col-lg-9.col-md-9
+        %h2.title Сравнение товаров
+        %table.items-list
+
+          %tr
+            %th Характеристика
+            - @products.each do |product|
+              %th{ class: "product_id_#{product.id}" }= product.title
+
+          %tr.item.first
+            %td.thumb Цена
+            - @products.each do |product|
+              %td.price{class: "product_id_#{product.id}"}= number_to_currency product.offer_price_min.price
+          %tr.item.first
+            %td.thumb Описание
+            - @products.each do |product|
+              %td{class: "product_id_#{product.id}"}= product.description
+          %tr.item.first
+            %td.thumb Производитель
+            - @products.each do |product|
+              %td{class: "product_id_#{product.id}"}= product.producer ? product.producer.title : "NoName"
+
+          %tr
+            %td
+            - @products.each do |product|
+              %td.button{class: "product_id_#{product.id}"}
+                %a.btn.btn-primary.btn-sm{:href => "#"}
+                  %i.icon-shopping-cart>
+                  Добавить в корзину
+
+          %tr
+            %td
+            - @products.each do |product|
+              %td.delete.text-center{class: "product_id_#{product.id}"}
+                = link_to image_tag('delete.png'), destroy_from_wishlist_path(id: product.id), method: :delete, remote: true, :data => { :confirm => 'Удалить из сравнения?' }
+                / %i.icon-delete
+
+          / / Item
+          / %tr.item.first
+          /   %td.thumb
+          /     %a{:href => "shop-single-item-v1.html"}
+          /       %img{:alt => "Nikon D4S", :src => "img/catalog/shopping-cart-thumb-1.jpg"}/
+          /   %td.name
+          /     %a{:href => "shop-single-item-v1.html"} Nikon D4S
+          /   %td.price 715,00 $
+          /   %td.button
+          /     %a.btn.btn-primary.btn-sm{:href => "#"}
+          /       %i.icon-shopping-cart>
+          /       Add to cart
+          /   %td.delete
+          /     %i.icon-delete
+
+          / / Item
+          / %tr.item.first
+          /   %td.thumb
+          /     %a{:href => "shop-single-item-v1.html"}
+          /       %img{:alt => "Nikkor 11-27.5", :src => "img/catalog/shopping-cart-thumb-2.jpg"}/
+          /   %td.name
+          /     %a{:href => "shop-single-item-v1.html"} Nikkor
+          /   %td.price 715,00 $
+          /   %td.button
+          /     %a.btn.btn-primary.btn-sm{:href => "#"}
+          /       %i.icon-shopping-cart>
+          /       Add to cart
+          /   %td.delete
+          /     %i.icon-delete
+          / / Item
+          / %tr.item.first
+          /   %td.thumb
+          /     %a{:href => "shop-single-item-v1.html"}
+          /       %img{:alt => "Nikon D4S", :src => "img/catalog/shopping-cart-thumb-1.jpg"}/
+          /   %td.name
+          /     %a{:href => "shop-single-item-v1.html"} Nikon D4S
+          /   %td.price 715,00 $
+          /   %td.button
+          /     %a.btn.btn-primary.btn-sm.disabled{:href => "#"} Out of stock
+          /   %td.delete
+          /     %i.icon-delete
+          / / Item
+          / %tr.item.first
+          /   %td.thumb
+          /     %a{:href => "shop-single-item-v1.html"}
+          /       %img{:alt => "Nikkor 11-27.5", :src => "img/catalog/shopping-cart-thumb-2.jpg"}/
+          /   %td.name
+          /     %a{:href => "shop-single-item-v1.html"} Nikkor
+          /   %td.price 715,00 $
+          /   %td.button
+          /     %a.btn.btn-primary.btn-sm{:href => "#"}
+          /       %i.icon-shopping-cart>
+          /       Add to cart
+          /   %td.delete
+          /     %i.icon-delete
+          / / Item
+          / %tr.item.first
+          /   %td.thumb
+          /     %a{:href => "shop-single-item-v1.html"}
+          /       %img{:alt => "Nikon D4S", :src => "img/catalog/shopping-cart-thumb-1.jpg"}/
+          /   %td.name
+          /     %a{:href => "shop-single-item-v1.html"} Nikon D4S
+          /   %td.price 715,00 $
+          /   %td.button
+          /     %a.btn.btn-primary.btn-sm.disabled{:href => "#"} Out of stock
+          /   %td.delete
+          /     %i.icon-delete
+/ Wishlist Close
+

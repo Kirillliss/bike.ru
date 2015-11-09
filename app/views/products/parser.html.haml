@@ -1,0 +1,19 @@
+%ul
+  - @categories.each do |category|
+    %li
+      = category.xpath('Наименование').text
+      = category.xpath('Ид').text
+%pre
+  = @categories
+%hr
+
+%ul
+  - @products.each do |product|
+    %li
+      = product.xpath('Наименование').text
+      = product.xpath('Ид').text
+%pre
+  = @products
+%hr
+%pre
+  = @doc

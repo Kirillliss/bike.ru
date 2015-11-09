@@ -1,0 +1,18 @@
+.page-header
+  %h2
+    = @discount.new_record? ? 'Создаем' : 'Редактируем'
+    скидку
+
+= simple_form_for(@discount) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :amount
+    = f.input :all_products
+    = f.association :products, input_html: { class: 'select2'}
+    = f.association :categories, input_html: { class: 'select2'}
+
+  .form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отменить', discounts_path, class: 'btn btn-default'

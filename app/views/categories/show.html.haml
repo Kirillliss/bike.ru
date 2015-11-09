@@ -1,0 +1,60 @@
+- content_for :title, @category.seo_title || @category.title
+- content_for :keywords, @category.seo_keywords || @category.title
+- content_for :description, @category.seo_description || @category.title
+
+%ol.breadcrumb
+  %li
+    %a{:href => "/"} Главная
+  - @category.ancestors.each do |parent|
+    %li= link_to parent.title, parent
+  %li= @category.title
+
+.container
+  %h2.with-sorting= @category.title
+  / .sorting
+  /   %a{:href => "#"} Сортировать по имени
+  /   %a.sorted{:href => "#"} Сортировать по цене
+
+%section.catalog-grid
+  .container
+    .row
+      / Filters
+      .filters-mobile.col-lg-3.col-md-3.col-sm-4
+        .shop-filters
+          %section.filter-section
+            %h3= link_to @category.root.title, @category.root
+            %ul.categories.ss
+              = render @category.root.children.published.order(:position)
+          %section.filter-section
+            .price-slider
+              %h3 Фильтр по цене
+              = simple_form_for(@search, url: { controller: 'categories', action: 'search'} , method: "get", name: "price-filters", id: @category.id ) do |f|
+                .values.group
+
+                  = f.input_field :price_from, id: 'minVal', class: 'form-control', style: 'width: 70px'
+
+                  = f.input_field :price_to, id: 'maxVal', class: 'form-control', style: 'width: 70px'
+                  %span.labels
+                    %del
+                      %span{:style => "font-family: Arial; font-size: 16.0pt;"} P
+                  = f.button :submit, 'ОК', class: 'btn btn-primary btn-sm'
+                  = f.hidden_field :category_id
+                  %br
+                  %br
+                  / - if @category.producers.any?
+                  /   = f.association :producer, input_html: { class: 'select2 select2-bootstrap-append' }, include_blank: false, collection: @category.producers
+
+
+      / Products
+      .col-lg-9.col-md-9.col-sm-8
+        / .row
+        %div{style: 'margin: 0 auto; width: 200px;'}
+          = link_to 'Показать все', category_path(@category, all: true)
+        - @products.each_slice(3) do |products|
+          .row
+            - products.each do |product|
+              = render partial: 'products/product', locals: { product: product }
+        = paginate @products
+        %div{style: 'margin: 0 auto; width: 200px;'}
+          = link_to 'Показать все', category_path(@category, all: true)
+

@@ -1,0 +1,53 @@
+%p#notice= notice
+.page-header
+  %h1
+    Заказ ID
+    = @order.id
+%p
+  - if @order.can_cancel?
+    = button_to 'Отменить', cancel_admin_order_path(@order), class: 'btn btn-default'
+  - if @order.can_ship?
+    = button_to 'Завершить', ship_admin_order_path(@order), method: :post, class: 'btn btn-default'
+%p
+  %b Номер:
+  = @order.number
+%p
+  %b Статус:
+  = @order.state_rus
+%p
+  %b Клиент:
+  = link_to @order.user.full_name, [:admin, @order.user]
+%p
+  %b Телефон:
+  = @order.user.phone
+%p
+  %b Вид оплаты:
+  = @order.pay_type
+%p
+  %b Адрес:
+  = @order.address
+
+%p
+  %b Тип доставки:
+  = @order.kind_of_shipping
+
+%p
+  %b Цена доставки:
+  = number_to_currency @order.price_of_shipping
+
+%p
+  %b Купон:
+  = @order.coupon ? link_to(@order.coupon.code, [:admin, @order.coupon]) : "Без купона"
+
+%table.table.table-stripped.table-bordered
+  - @order.line_items.each do |line_item|
+    %tr
+      %td
+        = line_item.quantity
+        \×
+      %td= link_to line_item.product.title, [:admin, line_item.product.category, line_item.product]
+      %td= line_item.characteristics_from_offer
+      %td.item_price= number_to_currency(line_item.total_price)
+  %tr.total_line
+    %td{colspan: "2"} Итого c доставкой
+    %td.total_cell= number_to_currency(@order.total_price + @order.price_of_shipping)

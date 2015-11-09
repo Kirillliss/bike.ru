@@ -1,0 +1,27 @@
+- content_for :title, @category.seo_title || @category.title
+- content_for :keywords, @category.seo_keywords || @category.title
+- content_for :description, @category.seo_description || @category.title
+
+- length = 70
+.container.main-container
+  .row
+    .col-lg-3.col-md-3.col-sm-12
+      = render 'categories'
+      = render 'best_seller'
+    .clearfix.visible-sm
+    / Catalogue
+    .col-lg-9.col-md-9.col-sm-12
+      .col-lg-12.col-sm-12
+        %span.title= @category.title
+      - if @category.root?
+        - @category.children.published.order(:position).each do |category|
+          .col-lg-4.col-sm-4.hero-feature.text-center
+            .thumbnail
+              = link_to category, class: 'link-p' do
+                = image_tag category.image_url
+              .caption.prod-caption
+                %h4= link_to category.title, category
+      - else
+        = render @products
+        .clearfix.visible-sm
+        = paginate @products

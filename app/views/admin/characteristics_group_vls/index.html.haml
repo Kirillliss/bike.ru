@@ -1,0 +1,25 @@
+%h1
+  Значения строк групп характеристик
+  = link_to 'Новое значение для строки группы характеристики', new_characteristics_group_vl_path, class: 'btn btn-success'
+
+%table.table.table-stripped.table-bordered.datatable
+
+  %thead
+    %tr
+      %th id
+      %th Принадлежит строке(id)
+      %th Значение характеристики
+      / %th
+      %th
+      %th
+  %tbody
+    - @characteristics_group_row_values.each do |characteristics_group_row_value|
+      %tr
+        %td= characteristics_group_row_value.id
+        %td= characteristics_group_row_value.characteristics_group_row.id
+        %td= characteristics_group_row_value.characteristic_value.value
+        / %td= link_to 'Показать', characteristics_group_row_value, class: 'btn btn-default'
+        %td= link_to 'Редактировать', edit_characteristics_group_vl_path(characteristics_group_row_value), class: 'btn btn-default'
+        %td= link_to 'Удалить', characteristics_group_row_value, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
+
+

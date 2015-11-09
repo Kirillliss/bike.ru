@@ -1,0 +1,42 @@
+- content_for :left_menu do
+  = render :partial => 'pages/pages_menu'
+
+%section.log-reg.container
+  %h2 Мои заказы
+  .row
+    %ol.breadcrumb.orders-nav
+      %li
+        %a{ href: orders_path, title: 'Все' }
+          Все
+      %li
+        %a{ href: orders_path(filter: :active), title: 'Активные' }
+          Активные
+      %li
+        %a{ href: orders_path(filter: :canceled), title: 'Отмененные' }
+          Отмененные
+
+  - if @orders.any?
+    %table.items-list
+      %thead
+        %tr
+          %th.col-md-2 Дата
+          %th.col-md-1 Номер
+          %th.col-md-2 Статус
+          %th.col-md-4 Адрес
+          %th.col-md-1 Товаров
+          %th.col-md-3.col-xs-3 Cумма
+          %th.col-md-2
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td.col-md-2=l order.created_at, format: "%d.%m.%Y"
+            %td.col-md-1= order.id
+            %td.col-md-2= order.state_rus
+            %td.col-md-4= order.address
+            %td.col-md-1= order.total_quantity
+            %td.col-md-3.col-xs-3=number_to_currency order.total_price
+            %td.col-md-2= link_to 'Подробности', order
+
+      %br
+  - else
+    %h3 Ничего не найдено

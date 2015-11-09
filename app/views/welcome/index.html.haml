@@ -1,0 +1,310 @@
+/ Categories Slider Close
+
+/ Hero Slider
+/ %section.hero-slider{:style => "position: relative;"}= render 'slider'
+/ Hero Slider Close
+/ Categories
+/ %section.cat-tiles
+/   .container
+/     %h2 Категории товаров
+/     .row
+/       / - Category.roots.order(:position).published.limit(6).each do |category|
+/       - Category.roots.order(:position).published.each do |category|
+/         / Category
+/         - next if category.childess?
+/         .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/           = link_to category, class: 'frontcat' do
+/             = image_tag category.image_url
+/             %p=category.title
+
+= render 'categories_slider'
+
+/ %section.brand-carousel
+/   .container
+/     %h2 Категории товаров
+/     .inner
+/       - Category.roots.order(:position).published.each do |category|
+/         - next if category.childess?
+/         %a.item{:href => category_path(category)}
+/           %img{:alt => "haibikes", :src => category.image_url}/
+/           %p= category.title
+
+
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "1", :src => "http://the8guild.com/themes/html/bushido/img/categories/1.jpg"}/
+/       /     %p Category name
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "2", :src => "http://the8guild.com/themes/html/bushido/img/categories/2.jpg"}/
+/       /     %p Category name
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "3", :src => "http://the8guild.com/themes/html/bushido/img/categories/3.jpg"}/
+/       /     %p Category name
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "4", :src => "http://the8guild.com/themes/html/bushido/img/categories/4.jpg"}/
+/       /     %p Category name
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "5", :src => "http://the8guild.com/themes/html/bushido/img/categories/5.jpg"}/
+/       /     %p Category name
+/       / / Category
+/       / .category.col-lg-2.col-md-2.col-sm-4.col-xs-6
+/       /   %a{:href => "#"}
+/       /     %img{:alt => "5", :src => "http://the8guild.com/themes/html/bushido/img/categories/6.jpg"}/
+/       /     %p Category name
+/ / Categories Close
+/ / Catalog Grid
+
+%section.catalog-grid
+  .container
+    %h2.primary-color Выгодное предложение
+    .row
+      / Tile
+      / - Product.aviable.limit(6).each do |product|
+      - Product.benefits.aviable.each_slice(3) do |products|
+        .row
+          - products.each do |product|
+            = render partial: 'products/product', locals: { product: product }
+        / .col-lg-3.col-md-4.col-sm-6
+        /   .tile
+        /     .badges
+        /       %span{class: "#{%w(sale out best-seller).sample}"}
+        /     .price-label= number_to_currency product.price, unit: 'руб.'
+        /     .price-label.old-price= number_to_currency product.old_price, unit: 'руб.'
+        /     %a{:href => "#"}
+        /       %img{:alt => "1", :src => "#{product.image_url}", style: 'height: 200px; margin: 10px;'}/
+        /     .footer
+        /       %a{:href => "#"}= product.title
+        /       %span= product.category.title
+        /       .tools
+        /         .rate
+        /           %span.active
+        /           %span.active
+        /           %span.active
+        /           %span
+        /           %span
+        /         / Add To Cart Button
+        /         %a.add-cart-btn{:href => "#"}
+        /           %span В корзину
+        /           %i.icon-shopping-cart
+        /         / Share Button
+        /         .share-btn
+        /           .hover-state
+        /             %a.fa.fa-facebook-square{:href => "#"}
+        /             %a.fa.fa-twitter-square{:href => "#"}
+        /             %a.fa.fa-google-plus-square{:href => "#"}
+        /           %i.fa.fa-share
+        /         / Add To Wishlist Button
+        /         %a.wishlist-btn{:href => "#"}
+        /           .hover-state Сравнить
+        /           %i.fa.fa-plus
+
+/ Catalog Grid Close
+/ Tabs Widget
+%section.tabs-widget
+  / Nav tabs
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#bestsel"} Хиты продаж
+    %li
+      %a{"data-toggle" => "tab", :href => "#onsale"} Уцененные товары
+  .tab-content
+    #bestsel.tab-pane.fade.in.active
+      .container
+        - Product.hits.aviable.each_slice(2) do |products|
+          .row
+            - products.each do |product|
+              .col-lg-6.col-md-6.col-sm-6
+                %a.media-link{:href => "#{product_path(product)}"}
+                  .overlay
+                    .descr
+                      %div
+                        = product.title
+                        %span= number_to_currency product.offer_price_min.price, unit: 'руб.'
+                  %img{:alt => "1", :src => "#{product.image_url}"}/
+
+    #onsale.tab-pane.fade
+      .container
+        - Product.markdowns.aviable.each_slice(3) do |products|
+          .row
+            - products.each do |product|
+              .col-lg-4.col-md-4.col-sm-4
+                %a.media-link{:href => "#{product_path(product)}"}
+                  .overlay
+                    .descr
+                      %div
+                        = product.title
+                        %span= number_to_currency product.offer_price_min.price, unit: 'руб.'
+                  %img{:alt => "1", :src => "#{product.image_url}"}/
+
+/ / Tabs Widget Close
+/ / Posts/Twitter Widget
+/ %section.posts-widget
+/   .tw-bg
+/   .container
+/     .row
+/       .latest-posts.col-lg-8.col-md-8
+/         .row
+/           .col-lg-3
+/             %h2.extra-bold Latests posts
+/             %a.btn.btn-success.btn-block{:href => "#"} To blog
+/           .col-lg-9
+/             / Post
+/             .post.row
+/               .col-lg-6.col-sm-6
+/                 %a{:href => "#"}
+/                   %img{:alt => "1", :src => "http://the8guild.com/themes/html/bushido/img/posts-widget/1.jpg"}/
+/               .col-lg-6.col-sm-6
+/                 %h3
+/                   %a{:href => "#"} Another Title
+/                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+/                 .author
+/                   %i.fa.fa-user
+/                   %a{:href => "#"} By Bedismo
+/                 .comments
+/                   %i.fa.fa-comment
+/                   %a{:href => "#"} Comments (34)
+/             / Post End
+/             / Post
+/             .post.row
+/               .col-lg-6.col-sm-6
+/                 %a{:href => "#"}
+/                   %img{:alt => "2", :src => "http://the8guild.com/themes/html/bushido/img/posts-widget/2.jpg"}/
+/               .col-lg-6.col-sm-6
+/                 %h3
+/                   %a{:href => "#"} Awesome Title
+/                 %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+/                 .author
+/                   %i.fa.fa-user
+/                   %a{:href => "#"} By Jeddah
+/                 .comments
+/                   %i.fa.fa-comment
+/                   %a{:href => "#"} Comments (101)
+/             / Post End
+/       .twitter-feed.col-lg-4.col-md-4
+/         %a.tw-follow{:href => "https://twitter.com/8Guild", :target => "_blank"}
+/           .button
+/             Follow us
+/             %i.fa.fa-twitter
+/           %h2.extra-bold
+/             On Twitter
+/             %i.fa.fa-twitter
+/         / Tweet
+/         .tweet
+/           %a{:href => "#"} @Bedismo
+/           %p.p-style3 Uberly impressed with the AMAZING support I constantly get from awesome!!!
+/           .group
+/             .actions
+/               %a{:href => "#"} Reply
+/               %a{:href => "#"} Retweet
+/               %a{:href => "#"} Favorite
+/             %span.date 5 Mar 2014
+/         / Tweet Close
+/         / Tweet
+/         .tweet
+/           %a{:href => "#"} @Bedismo
+/           %p.p-style3 Uberly impressed with the AMAZING support I constantly get from awesome!!!
+/           .group
+/             .actions
+/               %a{:href => "#"} Reply
+/               %a{:href => "#"} Retweet
+/               %a{:href => "#"} Favorite
+/             %span.date 5 Mar 2014
+/         / Tweet Close
+/ / Gallery Widget
+/ %section.gray-bg.gallery-widget
+/   .container
+/     %h2 Product gallery
+/     .filters
+/       %a.active{"data-group" => "all", :href => "#"} All
+/       %a{"data-group" => "camera", :href => "#"} Camera
+/       %a{"data-group" => "flash", :href => "#"} Flash
+/       %a{"data-group" => "lenses", :href => "#"} Lenses
+/       %a{"data-group" => "video", :href => "#"} Video
+/     .gallery-grid.shuffle{:style => "position: relative; height: 584px; transition: height 250ms ease-out; -webkit-transition: height 250ms ease-out;"}
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"camera\"]", "data-src" => "http://the8guild.com/themes/html/bushido/img/gallery-widget/1.jpg", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "http://the8guild.com/themes/html/bushido/img/gallery-widget/1.jpg"}
+/           .overlay
+/             %span
+/               %i.icon-expand
+/           %img{:alt => "1", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_1.jpg"}/
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"camera\"]", "data-src" => "http://the8guild.com/themes/html/bushido/img/gallery-widget/2.jpg", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(380px, 0px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "http://the8guild.com/themes/html/bushido/img/gallery-widget/2.jpg"}
+/           .overlay
+/             %span
+/               %i.icon-expand
+/           %img{:alt => "2", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_2.jpg"}/
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"video\"]", "data-src" => "https://www.youtube.com/watch?v=hdEAWW7tZSA", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(760px, 0px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "https://www.youtube.com/watch?v=hdEAWW7tZSA"}
+/           .overlay
+/             %span
+/               %i.icon-music-play
+/           %img{:alt => "3", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_3.jpg"}/
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"lenses\"]", "data-src" => "http://the8guild.com/themes/html/bushido/img/gallery-widget/4.jpg", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(0px, 292px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "http://the8guild.com/themes/html/bushido/img/gallery-widget/4.jpg"}
+/           .overlay
+/             %span
+/               %i.icon-expand
+/           %img{:alt => "4", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_4.jpg"}/
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"flash\"]", "data-src" => "http://the8guild.com/themes/html/bushido/img/gallery-widget/5.jpg", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(380px, 292px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "http://the8guild.com/themes/html/bushido/img/gallery-widget/5.jpg"}
+/           .overlay
+/             %span
+/               %i.icon-expand
+/           %img{:alt => "5", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_5.jpg"}/
+/       / Item
+/       .gallery-item.shuffle-item.filtered{"data-groups" => "[\"flash\"]", "data-src" => "http://the8guild.com/themes/html/bushido/img/gallery-widget/6.jpg", :style => "position: absolute; top: 0px; left: 0px; -webkit-transform: translate3d(760px, 292px, 0px) scale3d(1, 1, 1); opacity: 1; transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out; -webkit-transition: -webkit-transform 250ms ease-out, opacity 250ms ease-out;"}
+/         %a{:href => "http://the8guild.com/themes/html/bushido/img/gallery-widget/6.jpg"}
+/           .overlay
+/             %span
+/               %i.icon-expand
+/           %img{:alt => "6", :src => "http://the8guild.com/themes/html/bushido/img/gallery-widget/th_6.jpg"}/
+/ / Gallery Widget Close
+/ / Brands Carousel Widget
+/ %section.brand-carousel
+/   .container
+/     %h2 Brands in our shop
+/     .inner.owl-carousel{:style => "opacity: 1; display: block;"}
+/       .owl-wrapper-outer
+/         .owl-wrapper{:style => "width: 2268px; left: 0px; display: block;"}
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "jQuery", :src => "http://the8guild.com/themes/html/bushido/img/brands/jquery.png"}/
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "WordPress", :src => "http://the8guild.com/themes/html/bushido/img/brands/wp.png"}/
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "WooCommerce", :src => "http://the8guild.com/themes/html/bushido/img/brands/woo.png"}/
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "Android", :src => "http://the8guild.com/themes/html/bushido/img/brands/android.png"}/
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "Macgasm", :src => "http://the8guild.com/themes/html/bushido/img/brands/macgasm.png"}/
+/           .owl-item{:style => "width: 189px;"}
+/             %a.item{:href => "#"}
+/               %img{:alt => "Dropbox", :src => "http://the8guild.com/themes/html/bushido/img/brands/dropbox.png"}/
+/       .owl-controls.clickable
+/         .owl-pagination
+/           .owl-page.active
+/             %span
+/           .owl-page
+/             %span
+/         .owl-buttons
+/           .owl-prev
+/           .owl-next
+/ / Brands Carousel Close

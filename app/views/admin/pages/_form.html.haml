@@ -1,0 +1,30 @@
+.row-fluid
+  .col-md-4= render 'pages_tree'
+  .col-md-8
+    %h3= @page.new_record? ? 'Новая страница' : 'Редактирование страницы'
+    %hr
+    = simple_form_for([:admin, @page]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :title
+        .row
+          .col-md-4
+            %br
+            = f.input :published
+          - unless @page.new_record?
+            .col-md-4
+              %br
+              = f.input :everywhereable if @page.root?
+            .col-md-4= f.association :projects, input_html: { class: 'select2', id: 'page_projects'} if @page.root?
+
+        %br
+        = f.input :body, as: :text, input_html: {class: 'ckedtr'}
+        = f.input :seo_title
+        = f.input :seo_keywords
+        = f.input :seo_description
+
+      .form-actions
+        = f.button :submit, 'Сохранить', class: 'btn btn-primary'
+        - back_url = @page.new_record? ? admin_pages_path : [:admin, @page]
+        = link_to 'Отменить', back_url, class: 'btn btn-danger btn-small'

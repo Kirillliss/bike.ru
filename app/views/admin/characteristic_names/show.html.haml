@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Характеристика:
+  = @characteristic.title
+
+= link_to 'Редактировать', edit_characteristic_name_path(@characteristic), class: 'btn btn-default'
+\|
+= link_to 'Показать все', characteristic_names_path, class: 'btn btn-default'
